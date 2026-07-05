@@ -1,0 +1,16 @@
+{
+    "name": "MoveData",
+    "rootNamespace": "",
+    "references": [
+        "GUID:6e17bb6e4536c934fadd83f4104f9f4f"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

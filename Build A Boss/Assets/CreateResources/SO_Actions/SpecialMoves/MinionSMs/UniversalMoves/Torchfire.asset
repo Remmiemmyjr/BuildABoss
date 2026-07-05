@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8200041c2d22f4d449fb6d5eccd90747, type: 3}
+  m_Name: Torchfire
+  m_EditorClassIdentifier: Assembly-CSharp::SpecialMove
+  moveName: Torchfire
+  damageType: 128
+  description: Light your opponent ablaze. May cause burning
+  describeResult: ' is burned!'
+  power: 60
+  accuracy: 90
+  manaCost: 10
+  effects: []
