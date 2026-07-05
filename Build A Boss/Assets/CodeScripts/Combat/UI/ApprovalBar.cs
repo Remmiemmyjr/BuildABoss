@@ -12,11 +12,15 @@ public class ApprovalBar : MonoBehaviour
 
     public void SetApproval(float _newA)
     {
+        if (_newA > 1)
+            _newA = 1;
         StartCoroutine(SetSmoothApproval(_newA));
     }
 
     IEnumerator SetSmoothApproval(float _newA)
     {
+        Mathf.Clamp(_newA, 0, 1);
+
         float currApproval = approvalBar.transform.localScale.x;
         //float changeAmount = currApproval - _newA;
 

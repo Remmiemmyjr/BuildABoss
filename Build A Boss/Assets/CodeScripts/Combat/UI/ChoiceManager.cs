@@ -77,6 +77,8 @@ public class ChoiceManager : MonoBehaviour
     }
     public void OnSelectIngratiate()
     {
+        if (BattleManager.Instance.Context.Approval >= 100)
+            return;
         UpdateMenu(BattleMenuState.Ingratiates);
     }
     public void OnRecruit()
@@ -121,7 +123,7 @@ public class ChoiceManager : MonoBehaviour
 
 
 
-    #region Special Attack Functions
+    #region Ingratiate Functions
     public void OnSelectIngratiateMove_1()
     {
         UpdateMenu(BattleMenuState.Busy);
