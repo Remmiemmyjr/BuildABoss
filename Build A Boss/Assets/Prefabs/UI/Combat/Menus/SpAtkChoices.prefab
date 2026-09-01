@@ -429,8 +429,8 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 698538331202484452}
-          m_TargetAssemblyTypeName: SetMoveTextData, Assembly-CSharp
-          m_MethodName: SetText
+          m_TargetAssemblyTypeName: SetMoveTextData, Combat
+          m_MethodName: SetManaText
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -446,7 +446,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 698538331202484452}
           m_TargetAssemblyTypeName: SetMoveTextData, Combat
-          m_MethodName: ClearText
+          m_MethodName: ClearManaText
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -763,8 +763,8 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1146175097645597411}
-          m_TargetAssemblyTypeName: SetMoveTextData, Assembly-CSharp
-          m_MethodName: SetText
+          m_TargetAssemblyTypeName: SetMoveTextData, Combat
+          m_MethodName: SetManaText
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -780,7 +780,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1146175097645597411}
           m_TargetAssemblyTypeName: SetMoveTextData, Combat
-          m_MethodName: ClearText
+          m_MethodName: ClearManaText
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -958,8 +958,8 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 2199790925737056179}
-          m_TargetAssemblyTypeName: SetMoveTextData, Assembly-CSharp
-          m_MethodName: SetText
+          m_TargetAssemblyTypeName: SetMoveTextData, Combat
+          m_MethodName: SetManaText
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -975,7 +975,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 2199790925737056179}
           m_TargetAssemblyTypeName: SetMoveTextData, Combat
-          m_MethodName: ClearText
+          m_MethodName: ClearManaText
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -1153,8 +1153,8 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 8545046671952177219}
-          m_TargetAssemblyTypeName: SetMoveTextData, Assembly-CSharp
-          m_MethodName: SetText
+          m_TargetAssemblyTypeName: SetMoveTextData, Combat
+          m_MethodName: SetManaText
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -1170,7 +1170,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 8545046671952177219}
           m_TargetAssemblyTypeName: SetMoveTextData, Combat
-          m_MethodName: ClearText
+          m_MethodName: ClearManaText
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

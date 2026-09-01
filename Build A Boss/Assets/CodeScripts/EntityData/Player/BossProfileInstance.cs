@@ -3,7 +3,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 
-public class PlayerBossInstance : EntityProfileInstance
+public class BossProfileInstance : EntityProfileInstance
 {
     public BossClass bossClass;
     public int reputation;
@@ -11,11 +11,12 @@ public class PlayerBossInstance : EntityProfileInstance
     public List<Ingratiate> KnownIngratiates;
 
     // TODO: need to change this to minion instance class
-    public List<MinionClass> recruitedMinions = new();
+    //public List<MinionClass> recruitedMinions = new();
+    //public RecruitList recruitListData;
 
 
     // Constructor
-    public PlayerBossInstance(BossClass _bossClass) : base(_bossClass)
+    public BossProfileInstance(BossClass _bossClass) : base(_bossClass)
     {
         bossClass = _bossClass;
         

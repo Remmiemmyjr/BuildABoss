@@ -7,7 +7,7 @@ public class MinionClass : OpponentClass
     [Header("Minion Info")]
     public MinionSpeciesType species;
     public Gender gender;
-    public PersonalityTypeClass personality;
+    //public PersonalityTypeClass personality;
     public Nations habitat;
     //public int approvalStat;
 

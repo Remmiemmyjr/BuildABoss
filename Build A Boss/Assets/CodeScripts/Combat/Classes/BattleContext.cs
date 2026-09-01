@@ -8,6 +8,7 @@ public class BattleContext
     // Can make lists later (allies, opponents if there are multiple participants in a battle
     public BattleEntity Player { get; private set; }
     public BattleEntity Opponent { get; private set; }
+    public MinionClass TempRecruit => BattleManager.Instance.temporaryRecruit;
 
     public BattleAction actionExecuted;
     public SpecialMove specialMoveExecuted;

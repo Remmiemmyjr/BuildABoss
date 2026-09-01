@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    private PlayerBossInstance Boss => PlayerDataManager.Instance.Boss;
+    private BossProfileInstance Boss => PlayerDataManager.Instance.Boss;
 
     [SerializeField]
     float rotSpeed = 0.15f;

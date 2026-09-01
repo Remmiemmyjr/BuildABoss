@@ -3,7 +3,7 @@ using UnityEngine;
 
 public static class BattleEntityFactory
 {
-    public static BattleEntity CreateFromPlayerBoss(PlayerBossInstance _boss)
+    public static BattleEntity CreateFromPlayerBoss(BossProfileInstance _boss)
     {
         BattleEntity bEntity = new BattleEntity(_boss);
 

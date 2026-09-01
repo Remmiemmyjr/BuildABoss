@@ -26,6 +26,7 @@ public class BattleManager : MonoBehaviour
     [Header("Choice & Action Management")]
     private List<BattleAction> pendingActions = new();
     private Queue<BattleAction> actionQueue = new();
+    public MinionClass temporaryRecruit;
 
     [Header("Turns")]
     public int turnNumber;
@@ -300,8 +301,6 @@ public class BattleManager : MonoBehaviour
     #region End Battle
     public IEnumerator EndBattle(WhyBattleEnded _why)
     {
-        SyncBattleProfileChanges.SaveBackToPlayerBoss(playerUnit);
-
         switch (_why)
         {
             case WhyBattleEnded.Defeat:
@@ -313,10 +312,13 @@ public class BattleManager : MonoBehaviour
                 break;
 
             case WhyBattleEnded.Recruit:
+                temporaryRecruit = GetOpponentUnit().Entity as MinionClass;
+                //if (GetOpponentUnit().Entity is MinionClass recruit)
                 yield return StartCoroutine(TextTyper.TypeText(dialogue, $"You recruited {GetOpponentUnit().Entity.displayName}!"));
                 break;
         }
 
+        SyncBattleProfileChanges.SaveBackToPlayerBoss(playerUnit, Context);
         BattleEvents.BattleEnded?.Invoke();
         ResetBattleManager();
     }

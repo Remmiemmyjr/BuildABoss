@@ -7,7 +7,7 @@ public class PlayerDataManager : MonoBehaviour
     [SerializeField]
     private BossClass startingBossDef;
 
-    public PlayerBossInstance Boss { get; private set; }
+    public BossProfileInstance Boss { get; private set; }
 
     private void Awake()
     {
@@ -19,6 +19,6 @@ public class PlayerDataManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
-        Boss = new PlayerBossInstance(startingBossDef);
+        Boss = new BossProfileInstance(startingBossDef);
     }
 }
