@@ -10,9 +10,7 @@ public class BossProfileInstance : EntityProfileInstance
     public int currXP;
     public List<Ingratiate> KnownIngratiates;
 
-    // TODO: need to change this to minion instance class
-    //public List<MinionClass> recruitedMinions = new();
-    //public RecruitList recruitListData;
+    public RecruitList recruitList;
 
 
     // Constructor

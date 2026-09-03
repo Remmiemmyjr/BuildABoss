@@ -7,6 +7,7 @@ public class EntityProfileInstance
     public int currHP;
     public int currMana;
     public int level;
+    public GameObject livingObject;
 
     public List<SpecialMove> KnownMoves;
     public StatusConditionInstance statusCondition;

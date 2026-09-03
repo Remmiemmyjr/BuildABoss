@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// I hate this i hate this i hate this i hate this
 public class DB_StatusCondition
 {
     // TODO: need a damage multiplier based on entity weakness to damage types

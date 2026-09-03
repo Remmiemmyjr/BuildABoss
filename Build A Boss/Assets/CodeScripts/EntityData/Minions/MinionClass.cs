@@ -11,6 +11,7 @@ public class MinionClass : OpponentClass
     public Nations habitat;
     //public int approvalStat;
 
+
     public List<Ingratiate> ingratiatesThatWork;
     public List<Ingratiate> hatedIngratiates;
 

@@ -33,7 +33,7 @@ public class BattleManager : MonoBehaviour
     public event Action<BattleMenuState> NewTurn;
     #endregion
 
-
+    
 
     // ----------------------------------------------------------------------------------------------------------
     #region Initialize Battle
@@ -309,12 +309,15 @@ public class BattleManager : MonoBehaviour
 
             case WhyBattleEnded.Victory:
                 yield return StartCoroutine(TextTyper.TypeText(dialogue, $"You won!"));
+                Destroy(GetOpponentUnit().Profile.livingObject);
                 break;
 
             case WhyBattleEnded.Recruit:
                 temporaryRecruit = GetOpponentUnit().Entity as MinionClass;
                 //if (GetOpponentUnit().Entity is MinionClass recruit)
+                PlayerDataManager.Instance.Boss.recruitList.AddNewRecruit(temporaryRecruit);
                 yield return StartCoroutine(TextTyper.TypeText(dialogue, $"You recruited {GetOpponentUnit().Entity.displayName}!"));
+                Destroy(GetOpponentUnit().Profile.livingObject);
                 break;
         }
 
