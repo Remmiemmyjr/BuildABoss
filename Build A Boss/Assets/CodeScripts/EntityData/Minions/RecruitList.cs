@@ -14,6 +14,13 @@ public class RecruitList
     // Allow player to recruit whatever minions, but they should be added to a temporary list first due to the capacity, then after a run player can
     // select which minions they would like to actually bring with them. 
 
+    public RecruitList()
+    {
+        Recruits = new List<MinionClass>();
+        RecruitsWaitList = new List<MinionClass>();
+        SelectedRecruitList = new List<MinionClass>();
+    }
+
     public List<MinionClass> GetListOfRecruits()
     {
         return Recruits;

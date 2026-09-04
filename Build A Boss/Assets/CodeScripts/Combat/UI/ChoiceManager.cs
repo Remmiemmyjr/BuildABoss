@@ -33,7 +33,7 @@ public class ChoiceManager : MonoBehaviour
 
         player = BattleManager.Instance.GetPlayerUnit();
         specialMovesToAssign = player.KnownMoves;
-        ingratiatesToAssign = PlayerDataManager.Instance.Boss.KnownIngratiates;
+        ingratiatesToAssign = PlayerRefManager.Ref.BossInstance.KnownIngratiates;
 
         Recruit.SetActive(false);
 

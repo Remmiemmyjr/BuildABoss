@@ -4,20 +4,20 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    private BossProfileInstance Boss => PlayerDataManager.Instance.Boss;
+    private BossProfileInstance Boss => PlayerRefManager.Ref.BossInstance;
 
-    [SerializeField]
-    float rotSpeed = 0.15f;
+    [Header("Movement Controls")]
+    float currSpeed;
     [SerializeField]
     float walkSpeed = 6f;
     [SerializeField]
     float sprintSpeed = 7.5f;
 
-    float currSpeed;
-
     Vector2 dir;
     Vector3 currVel;
+
     Rigidbody rb;
+
 
     void Start()
     {

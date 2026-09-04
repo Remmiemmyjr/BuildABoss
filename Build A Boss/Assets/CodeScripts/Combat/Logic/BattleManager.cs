@@ -65,7 +65,7 @@ public class BattleManager : MonoBehaviour
         turnNumber = 0;
         approval = 0;
 
-        BattleEntity player = BattleEntityFactory.CreateFromPlayerBoss(PlayerDataManager.Instance.Boss);
+        BattleEntity player = BattleEntityFactory.CreateFromPlayerBoss(PlayerRefManager.Ref.BossInstance);
         BattleEntity opponent = BattleEntityFactory.CreateFromOpponent(_opponentProfile);
 
         SetPlayerUnit(player);
@@ -80,7 +80,7 @@ public class BattleManager : MonoBehaviour
         transform.Find("BattleCanvas/CombatPanelHUD/ApprovalBar").GetComponent<ApprovalBarDisplay>().SetData();
 
         GetComponent<InitSpMoveHUD>().InitSpMoveButtons(player.KnownMoves);
-        GetComponent<InitIngratiateHUD>().InitIngratiateButtons(PlayerDataManager.Instance.Boss.KnownIngratiates);
+        GetComponent<InitIngratiateHUD>().InitIngratiateButtons(PlayerRefManager.Ref.BossInstance.KnownIngratiates);
 
         yield return StartCoroutine(TextTyper.TypeText(dialogue, $"{opponent.Entity.displayName} challenges you to a fight!"));
 
@@ -315,7 +315,7 @@ public class BattleManager : MonoBehaviour
             case WhyBattleEnded.Recruit:
                 temporaryRecruit = GetOpponentUnit().Entity as MinionClass;
                 //if (GetOpponentUnit().Entity is MinionClass recruit)
-                PlayerDataManager.Instance.Boss.recruitList.AddNewRecruit(temporaryRecruit);
+                PlayerRefManager.Ref.BossInstance.recruitList.AddNewRecruit(temporaryRecruit);
                 yield return StartCoroutine(TextTyper.TypeText(dialogue, $"You recruited {GetOpponentUnit().Entity.displayName}!"));
                 Destroy(GetOpponentUnit().Profile.livingObject);
                 break;
