@@ -5,14 +5,14 @@ using System.Collections.Generic;
 public class MinionClass : OpponentClass
 {
     [Header("Minion Info")]
-    public MinionSpeciesType species;
+    public SpeciesType species;
     public Gender gender;
     //public PersonalityTypeClass personality;
     public Nations habitat;
     //public int approvalStat;
 
 
-    public List<Ingratiate> ingratiatesThatWork;
+    public List<Ingratiate> lovedIngratiates;
     public List<Ingratiate> hatedIngratiates;
 
     // dropped items list

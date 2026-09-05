@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +11,8 @@ public class RecruitList
     List<MinionClass> SelectedRecruitList;
     int recruitCapacity;
     int remainingCapacity;
+
+    public static Action<MinionClass> RecruitAdded;
 
     // Allow player to recruit whatever minions, but they should be added to a temporary list first due to the capacity, then after a run player can
     // select which minions they would like to actually bring with them. 
@@ -35,6 +38,7 @@ public class RecruitList
     {
         // should add selected minion to recruit list
         Recruits.Add(recruit);
+        RecruitAdded?.Invoke(recruit);
     }
 
     public void AddRecruitToWaitList(MinionClass recruit)

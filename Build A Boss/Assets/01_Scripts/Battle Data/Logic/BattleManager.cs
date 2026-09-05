@@ -42,9 +42,9 @@ public class BattleManager : MonoBehaviour
         Instance = this;
     }
 
-    private void HandleBattleRequest(OpponentProfileInstance _instance)
+    private void HandleBattleRequest(OpponentProfileInstance _instance, bool _isHero)
     {
-        StartCoroutine(BeginBattle(_instance));
+        StartCoroutine(BeginBattle(_instance, _isHero));
     }
 
     private void OnEnable()
@@ -55,12 +55,13 @@ public class BattleManager : MonoBehaviour
     private void OnDisable()
     {
         BattleEvents.BattleRequested -= HandleBattleRequest;
+        BattleEvents.ClearAllEventSubscribers();
     }
 
     // collide with entity calls InitiateBattle?
     // will want an EntityInstance param
     // Temporarily a coroutine, should not have to be if I can make the battle log help with state delays
-    public IEnumerator BeginBattle(OpponentProfileInstance _opponentProfile)
+    public IEnumerator BeginBattle(OpponentProfileInstance _opponentProfile, bool _isHero)
     {
         turnNumber = 0;
         approval = 0;
@@ -335,8 +336,6 @@ public class BattleManager : MonoBehaviour
         actionQueue.Clear();
     }
     #endregion
-
-
 
     // ----------------------------------------------------------------------------------------------------------
     #region External Helpers

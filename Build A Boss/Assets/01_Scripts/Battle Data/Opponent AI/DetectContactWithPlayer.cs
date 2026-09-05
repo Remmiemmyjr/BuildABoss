@@ -1,8 +1,11 @@
 using UnityEngine;
 
+
 public class DetectContactWithPlayer : MonoBehaviour
 {
+    // NOTE: Put this on Player Controller instead, use collision.gameobject.opponentInstance and make an if statement depending on who it is, pass bool to request battle.
     private OpponentController controller;
+    bool isHero = false;
 
     private void Start()
     {
@@ -13,8 +16,7 @@ public class DetectContactWithPlayer : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            //StartCoroutine(BattleManager.Instance.BeginBattle(controller.minionInstance));
-            BattleEvents.RequestBattle(controller.opponentInstance);
+            BattleEvents.RequestBattle(controller.opponentInstance, isHero);
         }
     }
 }

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class SwitchToBuildMode : MonoBehaviour
+public class D_SwitchToBuildMode : MonoBehaviour
 {
     GameObject playerCam;
     public GameObject gridCam;

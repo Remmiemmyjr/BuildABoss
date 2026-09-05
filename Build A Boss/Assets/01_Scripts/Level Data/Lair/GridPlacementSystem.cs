@@ -49,7 +49,7 @@ public class GridPlacementSystem : MonoBehaviour
         if (mouseOnGrid.IsPointerOverUI())
             return;
 
-        if (SwitchToBuildMode.inBuildMode)
+        if (D_SwitchToBuildMode.inBuildMode)
         {
             Vector3 mousePos = mouseOnGrid.GetSelectedGridPos();
             Vector3Int gridPos = grid.WorldToCell(mousePos);
@@ -69,7 +69,7 @@ public class GridPlacementSystem : MonoBehaviour
 
     private void Update()
     {
-        if (SwitchToBuildMode.inBuildMode && selectedObjIndex >= 0)
+        if (D_SwitchToBuildMode.inBuildMode && selectedObjIndex >= 0)
         {
             Vector3 mousePos = mouseOnGrid.GetSelectedGridPos();
             Vector3Int gridPos = grid.WorldToCell(mousePos);

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Build A Boss/Identity/Personality")]
-public class PersonalityTypeClass : ScriptableObject
+public class PersonalityType : ScriptableObject
 {
     [Header("Personality Type")]
     public string personalityName;

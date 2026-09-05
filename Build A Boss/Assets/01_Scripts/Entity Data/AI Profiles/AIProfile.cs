@@ -4,7 +4,7 @@ using UnityEngine;
 public abstract class AIProfile : ScriptableObject
 {
     //public abstract 
-    PersonalityTypeClass personalityType;
+    PersonalityType personalityType;
 
     public abstract void OverworldBehavior();
 }

@@ -5,5 +5,5 @@ public class Ingratiate : ScriptableObject
 {
     public string ingratiateName;
     public int approvalBoost;
-    public MinionSpeciesType effectiveSpecies;
+    public SpeciesType effectiveSpecies;
 }

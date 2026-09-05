@@ -25,12 +25,12 @@ MonoBehaviour:
   maxKnownMoves: 2
   knownMoves: []
   learnableMoves: []
-  aiType: 0
-  species: {fileID: 0}
-  gender: 0
   personality: {fileID: 0}
+  aiType: 0
+  species: {fileID: 11400000, guid: 74bc890e08d94e442a95a7ed9d192e44, type: 2}
+  gender: 0
   habitat: 0
-  ingratiatesThatWork:
+  lovedIngratiates:
   - {fileID: 11400000, guid: 6e402ba58a2f642498b2b61f49ef13e3, type: 2}
   hatedIngratiates:
   - {fileID: 11400000, guid: 61bafda2b57be5e4696881c9fe38ad5e, type: 2}
