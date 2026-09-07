@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         currSpeed = walkSpeed;
+        Boss.playerController = this;
     }
 
     void FixedUpdate()

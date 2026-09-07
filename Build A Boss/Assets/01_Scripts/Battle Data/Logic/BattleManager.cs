@@ -58,8 +58,6 @@ public class BattleManager : MonoBehaviour
         BattleEvents.ClearAllEventSubscribers();
     }
 
-    // collide with entity calls InitiateBattle?
-    // will want an EntityInstance param
     // Temporarily a coroutine, should not have to be if I can make the battle log help with state delays
     public IEnumerator BeginBattle(OpponentProfileInstance _opponentProfile, bool _isHero)
     {

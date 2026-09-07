@@ -724,6 +724,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcbcfe56278eebe46914e54d2281aaf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::D_DebugInput
+  recruitListDebug: {fileID: 3384032456066336044}
   debugCanvas: {fileID: 1264818840622925596}
 --- !u!1 &4153529953631403257
 GameObject:
@@ -846,7 +847,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 5418134372259146527}
   m_Direction: 2
   m_Value: 1.000002
-  m_Size: 0.417829
+  m_Size: 0.41782904
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

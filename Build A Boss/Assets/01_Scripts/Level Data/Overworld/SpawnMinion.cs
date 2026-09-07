@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnMinion : MonoBehaviour
 {
     public MinionClass minionClass;
-    public GameObject prefab;
+    public GameObject prefab; // TODO: Dictionary/map of minions to spawn, Prefab & Quantity?
     public List<Transform> listOfSpawnpoints;
 
     private void Start()

@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class D_DebugInput : MonoBehaviour
 {
-    D_RecruitContentManager recruitListDebug;
+    [SerializeField] D_RecruitContentManager recruitListDebug;
     [SerializeField] GameObject debugCanvas;
 
     bool debugEnabled = false;
@@ -21,11 +21,13 @@ public class D_DebugInput : MonoBehaviour
             if (!debugEnabled)
             {
                 debugCanvas.GetComponent<Canvas>().enabled = true;
+                recruitListDebug.GenerateVisualList();
                 debugEnabled = true;
             }
             else
             {
                 debugCanvas.GetComponent<Canvas>().enabled = false;
+                recruitListDebug.DeleteVisualList();
                 debugEnabled = false;
             }
         }

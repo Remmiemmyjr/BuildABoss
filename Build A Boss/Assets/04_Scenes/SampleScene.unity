@@ -3300,10 +3300,10 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize2D: {x: 10, y: 10}
   m_Shadows:
-    m_Type: 2
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.775
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -3380,7 +3380,7 @@ MonoBehaviour:
   m_CustomShadowLayers: 0
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
-  m_SoftShadowQuality: 1
+  m_SoftShadowQuality: 3
   m_RenderingLayersMask:
     serializedVersion: 0
     m_Bits: 1
@@ -3401,8 +3401,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 415584002}
+  - component: {fileID: 415584003}
   m_Layer: 0
-  m_Name: SceneEntrance
+  m_Name: West Entry Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3417,12 +3418,25 @@ Transform:
   m_GameObject: {fileID: 415584001}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.05, y: 0.5, z: -24.22}
+  m_LocalPosition: {x: 0.05, y: 2, z: -24.22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 777133862}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &415584003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 415584001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee329f0b6678aed41995c65483385fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneEntryPoint
+  entryType: 3
 --- !u!4 &451003701 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7878350319992209165, guid: b218bc0395408234ebe9bfaa76295391, type: 3}
@@ -10524,6 +10538,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7878350319992209165, guid: b218bc0395408234ebe9bfaa76295391, type: 3}
   m_PrefabInstance: {fileID: 1031155319}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1732730613
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1732730614}
+  - component: {fileID: 1732730615}
+  m_Layer: 0
+  m_Name: SceneManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1732730614
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1732730613}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 18.87045, y: -0, z: -10.04273}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1732730615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1732730613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20323ac00fb7ccc4c96fe954cf86f7ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneTransitionManager
 --- !u!1001 &1733323729
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11685,7 +11743,7 @@ GameObject:
   - component: {fileID: 1854629119}
   - component: {fileID: 1854629118}
   m_Layer: 0
-  m_Name: SceneExit
+  m_Name: West Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11721,10 +11779,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1854629117}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2957be846e6671e4f8210dc78b7a0e65, type: 3}
+  m_Script: {fileID: 11500000, guid: 1b5250db34336a24495dae1cfc3b172d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SwitchScenes
-  SceneToLoad: LairScene
+  targetEntryPoint: 2
+  targetScene: LairScene
 --- !u!4 &1854629120
 Transform:
   m_ObjectHideFlags: 0
@@ -13896,9 +13955,53 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 730187791370638024, guid: 79aa0d36a82aeb24e81292e061feb167, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -257.2829
+      objectReference: {fileID: 0}
     - target: {fileID: 2338411846244520724, guid: 79aa0d36a82aeb24e81292e061feb167, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330941770294970430, guid: 79aa0d36a82aeb24e81292e061feb167, type: 3}
+      propertyPath: m_Size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330941770294970430, guid: 79aa0d36a82aeb24e81292e061feb167, type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5418134372259146527, guid: 79aa0d36a82aeb24e81292e061feb167, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5418134372259146527, guid: 79aa0d36a82aeb24e81292e061feb167, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5418134372259146527, guid: 79aa0d36a82aeb24e81292e061feb167, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7291494134691096269, guid: 79aa0d36a82aeb24e81292e061feb167, type: 3}
+      propertyPath: m_CastShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7291494134691096269, guid: 79aa0d36a82aeb24e81292e061feb167, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 11f22d3e938e8fa4ea5562713f95fc25, type: 2}
+    - target: {fileID: 7391429839522257780, guid: 79aa0d36a82aeb24e81292e061feb167, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7391429839522257780, guid: 79aa0d36a82aeb24e81292e061feb167, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7391429839522257780, guid: 79aa0d36a82aeb24e81292e061feb167, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13914,3 +14017,4 @@ SceneRoots:
   - {fileID: 1271473857}
   - {fileID: 777133862}
   - {fileID: 2040841525}
+  - {fileID: 1732730614}

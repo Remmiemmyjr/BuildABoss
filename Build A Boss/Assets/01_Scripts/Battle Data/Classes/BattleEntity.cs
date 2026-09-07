@@ -16,7 +16,7 @@ public class BattleEntity
     public bool IsDefending = false; // TODO: hmmmm.... gotta be a better way to manage lmao
 
     [Header("Battle Info")]
-    public int level => Entity.level; // saves memory, cant accidentally edit level
+    public int level => Profile.level; // saves memory, cant accidentally edit level
     public int currHP;
     public int currMana;
     public List<SpecialMove> KnownMoves { get; private set; }
@@ -45,7 +45,7 @@ public class BattleEntity
         currMana = _profile.currMana;
         statusCondition = _profile.statusCondition;
         KnownMoves = new List<SpecialMove>(_profile.KnownMoves);
-        RuntimeStats = new StatBlock(Entity.baseStats);
+        RuntimeStats = new StatBlock(Entity.baseStats); // needs to change to _profile
     }
     #endregion
 
@@ -63,6 +63,7 @@ public class BattleEntity
 
     public void Heal(int amount)
     {
+        // TODO: Change all Enitty.baseStats instances to grab from Profile
         if (currHP >= Entity.baseStats.maxHP)
             return;
         amount = Mathf.Clamp(amount, 0, Entity.baseStats.maxHP - currHP);
