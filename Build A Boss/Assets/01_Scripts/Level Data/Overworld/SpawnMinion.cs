@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class SpawnMinion : MonoBehaviour
 {
-    public MinionClass minionClass;
+    public List<MinionClass> minionsThatCanSpawn;
     public GameObject prefab; // TODO: Dictionary/map of minions to spawn, Prefab & Quantity?
     public List<Transform> listOfSpawnpoints;
 
     private void Start()
     {
         for(int i = 0; i < listOfSpawnpoints.Count; i++)
-            SpawnRandomOpponent(listOfSpawnpoints[i]);
+            SpawnRandomOpponent(listOfSpawnpoints[i], minionsThatCanSpawn[(int)Random.Range(0, minionsThatCanSpawn.Count)]);
     }
 
     //public void SpawnRandomMinion()
@@ -22,10 +22,11 @@ public class SpawnMinion : MonoBehaviour
     //    controller.SetInstance(instance);
     //}
 
-    public void SpawnRandomOpponent(Transform spawnPoint)
+    public void SpawnRandomOpponent(Transform _spawnPoint, MinionClass _minionToSpawn)
     {
-        GameObject newMinion = Instantiate(prefab, spawnPoint.position, Quaternion.identity);
-        OpponentProfileInstance instance = new OpponentProfileInstance(minionClass);
+        GameObject newMinion = Instantiate(prefab, _spawnPoint.position, Quaternion.identity);
+        newMinion.GetComponent<SpriteRenderer>().sprite = _minionToSpawn.sprite;
+        OpponentProfileInstance instance = new OpponentProfileInstance(_minionToSpawn);
         OpponentController controller = newMinion.GetComponent<OpponentController>();
         controller.SetInstance(instance);
         controller.opponentInstance.livingObject = newMinion;

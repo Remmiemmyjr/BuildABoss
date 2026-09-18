@@ -10,27 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86cf0bb64307f0742a2507cf1642bef4, type: 3}
-  m_Name: Kindler
-  m_EditorClassIdentifier: Assembly-CSharp::MinionClass
-  displayName: Kindler
+  m_Name: Flamrought
+  m_EditorClassIdentifier: EntityData::MinionClass
+  displayName: Flamrought
   level: 3
-  sprite: {fileID: 21300000, guid: db447f041b7c4cd44940489f57047acf, type: 3}
+  sprite: {fileID: 21300000, guid: d2224d751b909bb4d99d37dbde99354f, type: 3}
   baseStats:
     maxHP: 50
     maxMana: 30
     attackDamage: 15
     defense: 15
     speed: 15
-    specialPower: 17
-  maxKnownMoves: 2
+    specialPower: 20
+  maxKnownMoves: 0
   knownMoves: []
   learnableMoves: []
   personality: {fileID: 0}
   combatAIType: 0
-  species: {fileID: 11400000, guid: 74bc890e08d94e442a95a7ed9d192e44, type: 2}
+  species: {fileID: 11400000, guid: a3d2f2d09e9d31e479bc539feb165977, type: 2}
   gender: 0
-  habitat: 0
-  lovedIngratiates:
-  - {fileID: 11400000, guid: 6e402ba58a2f642498b2b61f49ef13e3, type: 2}
-  hatedIngratiates:
-  - {fileID: 11400000, guid: 61bafda2b57be5e4696881c9fe38ad5e, type: 2}
+  habitat: 3
+  lovedIngratiates: []
+  hatedIngratiates: []

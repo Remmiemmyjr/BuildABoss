@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c9631ecd96b8de4db3cd274efde84c4, type: 3}
-  m_Name: GreenHero
+  m_Name: AnnoyingHero
   m_EditorClassIdentifier: Assembly-CSharp::HeroClass
   displayName: 
   level: 0
-  sprite: {fileID: 0}
-  additionalStats: []
+  sprite: {fileID: 21300000, guid: 73389f7d1f164c54eb00f88db57e697e, type: 3}
   baseStats:
     maxHP: 0
     maxMana: 0
@@ -24,5 +23,9 @@ MonoBehaviour:
     speed: 0
     specialPower: 0
   maxKnownMoves: 0
-  LearnableMoves: []
-  KnownMoves: []
+  knownMoves: []
+  learnableMoves: []
+  personality: {fileID: 0}
+  combatAIType: 0
+  gender: 0
+  nation: 0

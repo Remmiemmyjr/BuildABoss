@@ -4160,7 +4160,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0197d302e3c584144bf6cf83f6ef7b70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnMinion
-  minionClass: {fileID: 11400000, guid: cf9f6bd3b7116754599c823b2a87d056, type: 2}
+  minionsThatCanSpawn:
+  - {fileID: 11400000, guid: 344fc087c429d824cb107510f6c9f811, type: 2}
+  - {fileID: 11400000, guid: d61ed75b37942424997ba5f0b640ad78, type: 2}
+  - {fileID: 11400000, guid: ed33971da91f18c48880e35af000e984, type: 2}
+  - {fileID: 11400000, guid: cf9f6bd3b7116754599c823b2a87d056, type: 2}
   prefab: {fileID: 2097761069534712011, guid: b891f131129e063438a4ffce6625d23b, type: 3}
   listOfSpawnpoints:
   - {fileID: 1920486261}

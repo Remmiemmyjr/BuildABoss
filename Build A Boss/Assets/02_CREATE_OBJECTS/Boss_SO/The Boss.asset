@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BossClass
   displayName: The Boss
   level: 3
-  sprite: {fileID: 21300000, guid: 4ca520ac71d2ca94d8b74089b5315566, type: 3}
+  sprite: {fileID: 21300000, guid: 72775a51010ea2f48ad2f631502e07e1, type: 3}
   baseStats:
     maxHP: 50
     maxMana: 30
