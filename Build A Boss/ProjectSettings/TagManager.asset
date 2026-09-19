@@ -12,8 +12,8 @@ TagManager:
   - GridPlacement
   - Water
   - UI
-  - 
-  - 
+  - MouseIndicator
+  - PlacedLairObject
   - 
   - 
   - 

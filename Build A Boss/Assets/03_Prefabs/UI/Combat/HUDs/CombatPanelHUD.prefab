@@ -237,7 +237,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4190209166619177229}
   - component: {fileID: 4804139600983082048}
-  - component: {fileID: 8159344275147531472}
   m_Layer: 0
   m_Name: CombatPanelHUD
   m_TagString: Untagged
@@ -257,6 +256,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 3820003637310198213}
   - {fileID: 8190051182582356134}
   - {fileID: 8164610480439574692}
   - {fileID: 3497346002297041854}
@@ -278,36 +278,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4266860879535504012}
   m_CullTransparentMesh: 1
---- !u!114 &8159344275147531472
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4266860879535504012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.09433961, g: 0.09433961, b: 0.09433961, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: dfed5aa507b9e8e4fb1fa8ad81d32c8f, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &4886841547323189188
 GameObject:
   m_ObjectHideFlags: 0
@@ -498,6 +468,81 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &6266593872656011528
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3820003637310198213}
+  - component: {fileID: 5748480379401546195}
+  - component: {fileID: 7651004139132615171}
+  m_Layer: 0
+  m_Name: Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3820003637310198213
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6266593872656011528}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4190209166619177229}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &5748480379401546195
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6266593872656011528}
+  m_CullTransparentMesh: 1
+--- !u!114 &7651004139132615171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6266593872656011528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: fa2931b4b8db8fa489b5d73dc0fef603, type: 3}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &8763988369758517087
 GameObject:
   m_ObjectHideFlags: 0
@@ -754,10 +799,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4190209166619177229}
     m_Modifications:
+    - target: {fileID: 3658923570786166970, guid: d4cdbab682f9f1a4287220b342ec9998, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 80876b52dec85f2439c9147b1e95e32b, type: 3}
+    - target: {fileID: 4916504798476348582, guid: d4cdbab682f9f1a4287220b342ec9998, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 80876b52dec85f2439c9147b1e95e32b, type: 3}
+    - target: {fileID: 6839571107319468351, guid: d4cdbab682f9f1a4287220b342ec9998, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 80876b52dec85f2439c9147b1e95e32b, type: 3}
     - target: {fileID: 7479725081478396408, guid: d4cdbab682f9f1a4287220b342ec9998, type: 3}
       propertyPath: m_Name
       value: CombatChoices
       objectReference: {fileID: 0}
+    - target: {fileID: 7693611550688327605, guid: d4cdbab682f9f1a4287220b342ec9998, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 80876b52dec85f2439c9147b1e95e32b, type: 3}
     - target: {fileID: 9119875217252844506, guid: d4cdbab682f9f1a4287220b342ec9998, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -856,6 +917,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4190209166619177229}
     m_Modifications:
+    - target: {fileID: 2384947961618894863, guid: 9a06b7ab55e8dd0459ed4d66fe7b1750, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 80876b52dec85f2439c9147b1e95e32b, type: 3}
+    - target: {fileID: 3912739805264624714, guid: 9a06b7ab55e8dd0459ed4d66fe7b1750, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 80876b52dec85f2439c9147b1e95e32b, type: 3}
+    - target: {fileID: 6213527197085346801, guid: 9a06b7ab55e8dd0459ed4d66fe7b1750, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 80876b52dec85f2439c9147b1e95e32b, type: 3}
+    - target: {fileID: 6247716491075008026, guid: 9a06b7ab55e8dd0459ed4d66fe7b1750, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 80876b52dec85f2439c9147b1e95e32b, type: 3}
     - target: {fileID: 7194519517509198545, guid: 9a06b7ab55e8dd0459ed4d66fe7b1750, type: 3}
       propertyPath: m_Name
       value: InitialMenu
@@ -958,6 +1035,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4190209166619177229}
     m_Modifications:
+    - target: {fileID: 202723230448412653, guid: 496d24b4a37c254438339ad61361bc24, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 80876b52dec85f2439c9147b1e95e32b, type: 3}
     - target: {fileID: 698538331202484452, guid: 496d24b4a37c254438339ad61361bc24, type: 3}
       propertyPath: manaCost
       value: 
@@ -982,6 +1063,10 @@ PrefabInstance:
       propertyPath: description
       value: 
       objectReference: {fileID: 4026969054816928798}
+    - target: {fileID: 3630213369796984474, guid: 496d24b4a37c254438339ad61361bc24, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 80876b52dec85f2439c9147b1e95e32b, type: 3}
     - target: {fileID: 5006692195432905426, guid: 496d24b4a37c254438339ad61361bc24, type: 3}
       propertyPath: m_Name
       value: SpAtkChoices
@@ -1066,6 +1151,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8242561633714246963, guid: 496d24b4a37c254438339ad61361bc24, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 80876b52dec85f2439c9147b1e95e32b, type: 3}
     - target: {fileID: 8545046671952177219, guid: 496d24b4a37c254438339ad61361bc24, type: 3}
       propertyPath: manaCost
       value: 
@@ -1074,6 +1163,10 @@ PrefabInstance:
       propertyPath: description
       value: 
       objectReference: {fileID: 4026969054816928798}
+    - target: {fileID: 9181914804864899613, guid: 496d24b4a37c254438339ad61361bc24, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 80876b52dec85f2439c9147b1e95e32b, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

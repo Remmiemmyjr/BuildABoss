@@ -484,6 +484,7 @@ GameObject:
   - component: {fileID: 130999031627595648}
   - component: {fileID: 7454076549753056297}
   - component: {fileID: 7418925365561625393}
+  - component: {fileID: 3391431110972081059}
   - component: {fileID: 7165879634988060972}
   - component: {fileID: 1015816770042712841}
   - component: {fileID: 1641571167602088323}
@@ -587,6 +588,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   walkSpeed: 8
   sprintSpeed: 12
+--- !u!114 &3391431110972081059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2338411846244520724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42c29a0c6c903fb44a8548715f6b11ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: EntityData::PlayerInteractor
 --- !u!114 &7165879634988060972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -644,6 +657,26 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 0c19b9a8-d5f5-4d5b-9c7f-be752ba7be31
     m_ActionName: 'Gameplay/Sprint[/Keyboard/shift]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3391431110972081059}
+        m_TargetAssemblyTypeName: PlayerInteractor, EntityData
+        m_MethodName: OnInteract
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: f33a8a8b-3125-487b-931f-e2cb9222f858
+    m_ActionName: 'Gameplay/Interact[/Keyboard/e]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6f46ddc7-859b-40f1-b9a6-6fc7126e869a
+    m_ActionName: 'LairBuilding/MouseClick[/Mouse/leftButton]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay
@@ -846,8 +879,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8404274840367573288}
   m_HandleRect: {fileID: 5418134372259146527}
   m_Direction: 2
-  m_Value: 1.0000025
-  m_Size: 0.4178291
+  m_Value: 1.0000023
+  m_Size: 0.41782904
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

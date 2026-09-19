@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1816527769278881473}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WallCorner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 490926087864057730}
   - component: {fileID: 844520683251950093}
   - component: {fileID: 4940652753277860223}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,7 +156,7 @@ GameObject:
   - component: {fileID: 4657070199797776288}
   - component: {fileID: 6848914118612811104}
   - component: {fileID: 6386095142495649534}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WallCorner Block
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -21,3 +21,11 @@ MonoBehaviour:
     <ID>k__BackingField: 2
     <Size>k__BackingField: {x: 1, y: 1}
     <Prefab>k__BackingField: {fileID: 3935635966382809940, guid: b5076e94f933c35478988027e07858fa, type: 3}
+  - <Name>k__BackingField: Minion Spot
+    <ID>k__BackingField: 3
+    <Size>k__BackingField: {x: 2, y: 2}
+    <Prefab>k__BackingField: {fileID: 5829179846298922745, guid: fa22a087cde8b0643932b2fddfe07134, type: 3}
+  - <Name>k__BackingField: Trap
+    <ID>k__BackingField: 4
+    <Size>k__BackingField: {x: 2, y: 2}
+    <Prefab>k__BackingField: {fileID: 210619629910620581, guid: caedf5413d17a1440b86e69386ab63d6, type: 3}

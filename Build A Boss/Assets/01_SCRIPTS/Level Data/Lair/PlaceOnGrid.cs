@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 using Unity.VisualScripting;
 using System;
 
-public class GridPlacementSystem : MonoBehaviour
+public class PlaceOnGrid : MonoBehaviour
 {
     // NOTE: ALL PIVOT POINTS OF GRID OBJECTS NEED TO BE BOTTOM LEFT CORNER
     [SerializeField]
@@ -21,9 +21,14 @@ public class GridPlacementSystem : MonoBehaviour
     //private GameObject gridVisualization;
 
     [SerializeField]
-    private MouseInputGrid mouseOnGrid;
+    private MouseInputLairBuilding mouseInputLair;
 
-    private void Start()
+    private void ToolActivated()
+    {
+        StopPlacement();
+    }
+
+    private void ToolDeactivated()
     {
         StopPlacement();
     }
@@ -40,21 +45,19 @@ public class GridPlacementSystem : MonoBehaviour
 
         //gridVisualization.SetActive(true);
         cellIndicator.SetActive(true);
-        mouseOnGrid.OnClicked += PlaceStructure;
-        mouseOnGrid.OnExit += StopPlacement;
+        mouseInputLair.OnMouseHeld += PlaceStructure;
+        mouseInputLair.OnMouseRelease += StopPlacement;
     }
 
     private void PlaceStructure()
     {
-        if (mouseOnGrid.IsPointerOverUI())
-            return;
-
-        if (D_SwitchToBuildMode.inBuildMode)
+        if (BuildToolActivator.inBuildMode)
         {
-            Vector3 mousePos = mouseOnGrid.GetSelectedGridPos();
+            Vector3 mousePos = mouseInputLair.GetSelectedGridOrObject();
             Vector3Int gridPos = grid.WorldToCell(mousePos);
             GameObject assetToPlace = Instantiate(database.lairAssets[selectedObjIndex].Prefab);
             assetToPlace.transform.position = grid.CellToWorld(gridPos);
+            StopPlacement();
         }
     }
 
@@ -63,15 +66,19 @@ public class GridPlacementSystem : MonoBehaviour
         selectedObjIndex = -1;
         //gridVisualization.SetActive(false);
         cellIndicator.SetActive(false);
-        mouseOnGrid.OnClicked -= PlaceStructure;
-        mouseOnGrid.OnExit -= StopPlacement;
+        mouseInputLair.OnMouseHeld -= PlaceStructure;
+        mouseInputLair.OnMouseRelease -= StopPlacement;
     }
 
     private void Update()
     {
-        if (D_SwitchToBuildMode.inBuildMode && selectedObjIndex >= 0)
+        if (BuildToolActivator.inBuildMode)
         {
-            Vector3 mousePos = mouseOnGrid.GetSelectedGridPos();
+            // not the right way to do this, need to bind an event to on clicked for this one
+            if (selectedObjIndex < 0)
+                mouseInputLair.GetSelectedGridOrObject();
+
+            Vector3 mousePos = mouseInputLair.GetSelectedGridOrObject();
             Vector3Int gridPos = grid.WorldToCell(mousePos);
             mouseIndicator.transform.position = mousePos;
             cellIndicator.transform.position = grid.CellToWorld(gridPos);
