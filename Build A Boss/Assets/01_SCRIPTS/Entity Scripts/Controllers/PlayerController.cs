@@ -1,10 +1,9 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    private BossProfileInstance Boss => PlayerRefManager.Ref.BossInstance;
+    //private BossProfileInstance Boss => GameManager.Instance.PlayerInstance;
 
     [Header("Movement Controls")]
     float currSpeed;
@@ -18,12 +17,20 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody rb;
 
-
-    void Start()
+    private void Start()
     {
         rb = GetComponent<Rigidbody>();
         currSpeed = walkSpeed;
-        Boss.playerController = this;
+        PlayerRefGetter.Instance.PlayerInstance.GameObjectInstance = gameObject;
+
+        InputManager.Instance.OnPlayerMovementInput += OnMove;
+        InputManager.Instance.OnPlayerSprintInput += OnSprint;
+    }
+
+    private void OnDisable()
+    {
+        InputManager.Instance.OnPlayerMovementInput -= OnMove;
+        InputManager.Instance.OnPlayerSprintInput -= OnSprint;
     }
 
     void FixedUpdate()
@@ -31,16 +38,16 @@ public class PlayerController : MonoBehaviour
         MovePlayer();
     }
 
-    public void OnMovementInput(InputAction.CallbackContext ctx)
+    public void OnMove(Vector2 _val)
     {
-        dir = ctx.ReadValue<Vector2>();
+        dir = _val;
     }
 
-    public void OnShiftHeld(InputAction.CallbackContext ctx)
+    public void OnSprint(bool _performed)
     {
-        if (ctx.canceled)
+        if (!_performed)
             currSpeed = walkSpeed;
-        else 
+        else
             currSpeed = sprintSpeed;
     }
 

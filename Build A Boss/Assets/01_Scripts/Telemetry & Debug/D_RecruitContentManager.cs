@@ -33,7 +33,7 @@ public class D_RecruitContentManager : MonoBehaviour
     // Alternative, destroy and generate the list whenever debug ui is opened/closed. 100% reflective, but inefficient
     public void GenerateVisualList()
     {
-        List<MinionClass> recruitListCopy = PlayerRefManager.Ref.BossInstance.recruitList.GetListOfRecruits();
+        List<MinionClass> recruitListCopy = PlayerRefGetter.Instance.PlayerInstance.RecruitList.GetListOfRecruits();
         foreach (MinionClass _minion in recruitListCopy)
         {
             var newEntry = Instantiate(entry, container);

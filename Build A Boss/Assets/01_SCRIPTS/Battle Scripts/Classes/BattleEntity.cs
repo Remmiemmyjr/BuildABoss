@@ -16,7 +16,7 @@ public class BattleEntity
     public bool IsDefending = false; // TODO: hmmmm.... gotta be a better way to manage lmao
 
     [Header("Battle Info")]
-    public int level => Profile.level; // saves memory, cant accidentally edit level
+    public int level => Profile.Level; // saves memory, cant accidentally edit level
     public int currHP;
     public int currMana;
     public List<SpecialMove> KnownMoves { get; private set; }
@@ -40,10 +40,10 @@ public class BattleEntity
     public BattleEntity(EntityProfileInstance _profile) 
     {
         Profile = _profile;
-        Entity = _profile.entityDefinition;
-        currHP = _profile.currHP;
-        currMana = _profile.currMana;
-        statusCondition = _profile.statusCondition;
+        Entity = _profile.EntityDefinition;
+        currHP = _profile.CurrHP;
+        currMana = _profile.CurrMana;
+        statusCondition = _profile.CurrStatusCondition;
         KnownMoves = new List<SpecialMove>(_profile.KnownMoves);
         RuntimeStats = new StatBlock(Entity.baseStats); // needs to change to _profile
     }

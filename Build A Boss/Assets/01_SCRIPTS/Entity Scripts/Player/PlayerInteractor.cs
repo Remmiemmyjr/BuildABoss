@@ -5,9 +5,19 @@ public class PlayerInteractor : MonoBehaviour
 {
     private IInteractable interactableInRange = null;
 
-    public void OnInteract(InputAction.CallbackContext context)
+    private void Start()
     {
-        if(interactableInRange != null && context.performed && interactableInRange.CanInteract())
+        InputManager.Instance.OnPlayerInteractInput += OnInteract;
+    }
+
+    private void OnDisable()
+    {
+        InputManager.Instance.OnPlayerInteractInput -= OnInteract;
+    }
+
+    public void OnInteract(bool performed)
+    {
+        if(interactableInRange != null && performed && interactableInRange.CanInteract())
         {
             interactableInRange?.Interact();
         }    
@@ -30,6 +40,4 @@ public class PlayerInteractor : MonoBehaviour
             interactableInRange = null;
         }
     }
-
-
 }

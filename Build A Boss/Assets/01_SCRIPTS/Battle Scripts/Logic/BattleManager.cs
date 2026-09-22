@@ -64,7 +64,7 @@ public class BattleManager : MonoBehaviour
         turnNumber = 0;
         approval = 0;
 
-        BattleEntity player = BattleEntityFactory.CreateFromPlayerBoss(PlayerRefManager.Ref.BossInstance);
+        BattleEntity player = BattleEntityFactory.CreateFromPlayerBoss(PlayerRefGetter.Instance.PlayerInstance);
         BattleEntity opponent = BattleEntityFactory.CreateFromOpponent(_opponentProfile);
 
         SetPlayerUnit(player);
@@ -79,7 +79,7 @@ public class BattleManager : MonoBehaviour
         transform.Find("BattleCanvas/CombatPanelHUD/ApprovalBar").GetComponent<ApprovalBarDisplay>().SetData();
 
         GetComponent<InitSpMoveHUD>().InitSpMoveButtons(player.KnownMoves);
-        GetComponent<InitIngratiateHUD>().InitIngratiateButtons(PlayerRefManager.Ref.BossInstance.KnownIngratiates);
+        GetComponent<InitIngratiateHUD>().InitIngratiateButtons(PlayerRefGetter.Instance.PlayerInstance.KnownIngratiates);
 
         yield return StartCoroutine(TextTyper.TypeText(dialogue, $"{opponent.Entity.displayName} challenges you to a fight!"));
 
@@ -308,15 +308,15 @@ public class BattleManager : MonoBehaviour
 
             case WhyBattleEnded.Victory:
                 yield return StartCoroutine(TextTyper.TypeText(dialogue, $"You won!"));
-                Destroy(GetOpponentUnit().Profile.livingObject);
+                Destroy(GetOpponentUnit().Profile.GameObjectInstance);
                 break;
 
             case WhyBattleEnded.Recruit:
                 temporaryRecruit = GetOpponentUnit().Entity as MinionClass;
                 //if (GetOpponentUnit().Entity is MinionClass recruit)
-                PlayerRefManager.Ref.BossInstance.recruitList.AddNewRecruit(temporaryRecruit);
+                PlayerRefGetter.Instance.PlayerInstance.RecruitList.AddNewRecruit(temporaryRecruit);
                 yield return StartCoroutine(TextTyper.TypeText(dialogue, $"You recruited {GetOpponentUnit().Entity.displayName}!"));
-                Destroy(GetOpponentUnit().Profile.livingObject);
+                Destroy(GetOpponentUnit().Profile.GameObjectInstance);
                 break;
         }
 

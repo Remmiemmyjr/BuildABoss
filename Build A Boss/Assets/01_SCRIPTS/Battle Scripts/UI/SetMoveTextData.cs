@@ -12,7 +12,7 @@ public class SetMoveTextData : MonoBehaviour
         description.text = move.description;
         string costText;
 
-        if (PlayerRefManager.Ref.BossInstance.currMana > move.manaCost)
+        if (PlayerRefGetter.Instance.PlayerInstance.CurrMana > move.manaCost)
             costText = $"Mana Cost: {move.manaCost}";
         else
             costText = "Not Enough Mana";

@@ -39,8 +39,8 @@ public class SceneTransitionManager : MonoBehaviour
         {
             if (entryPoint.entryType == _targetEntry)
             {
-                PlayerRefManager.Ref.BossInstance.playerController.gameObject.transform.SetPositionAndRotation(entryPoint.transform.position,
-                                                                                                               entryPoint.transform.rotation);
+                PlayerRefGetter.Instance.PlayerInstance.GameObjectInstance.transform.SetPositionAndRotation(entryPoint.transform.position,
+                                                                                                      entryPoint.transform.rotation);
                 return;
             }
         }

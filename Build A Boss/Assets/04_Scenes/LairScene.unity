@@ -416,7 +416,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LairBuildToolInteractor
   gridCam: {fileID: 509981389}
-  mouseInputLair: {fileID: 1427378509}
 --- !u!1 &239435747
 GameObject:
   m_ObjectHideFlags: 0
@@ -496,20 +495,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &241444535
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
-  m_Name: LairBuilding/MouseClick
-  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
-  m_Asset: {fileID: -944628639613478452, guid: 688a02b0fa12e2f47bf4b526ae3e25e5, type: 3}
-  m_ActionId: 6f46ddc7-859b-40f1-b9a6-6fc7126e869a
 --- !u!1 &260396349
 GameObject:
   m_ObjectHideFlags: 0
@@ -732,8 +717,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1427378508}
-        m_TargetAssemblyTypeName: PlaceOnGrid, Assembly-CSharp
+      - m_Target: {fileID: 1427378510}
+        m_TargetAssemblyTypeName: LairBuildTool, LevelData
         m_MethodName: StartPlacement
         m_Mode: 3
         m_Arguments:
@@ -865,8 +850,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1427378508}
-        m_TargetAssemblyTypeName: PlaceOnGrid, Assembly-CSharp
+      - m_Target: {fileID: 1427378510}
+        m_TargetAssemblyTypeName: LairBuildTool, LevelData
         m_MethodName: StartPlacement
         m_Mode: 3
         m_Arguments:
@@ -1761,8 +1746,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1427378508}
-        m_TargetAssemblyTypeName: PlaceOnGrid, Assembly-CSharp
+      - m_Target: {fileID: 1427378510}
+        m_TargetAssemblyTypeName: LairBuildTool, LevelData
         m_MethodName: StartPlacement
         m_Mode: 3
         m_Arguments:
@@ -2102,8 +2087,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1427378507}
-  - component: {fileID: 1427378508}
-  - component: {fileID: 1427378509}
+  - component: {fileID: 1427378510}
   m_Layer: 0
   m_Name: BuildingSystem
   m_TagString: Untagged
@@ -2131,7 +2115,7 @@ Transform:
   - {fileID: 231050924}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1427378508
+--- !u!114 &1427378510
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2140,35 +2124,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 1427378505}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73b16797c294bdd46956b42e27ef2bf5, type: 3}
+  m_Script: {fileID: 11500000, guid: f498dba7061523a448c9ae8513dfc270, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlaceOnGrid
+  m_EditorClassIdentifier: LevelData::LairBuildTool
+  gridCam: {fileID: 509981393}
   mouseIndicator: {fileID: 1532235525}
   cellIndicator: {fileID: 394520561}
-  grid: {fileID: 1534379619}
-  database: {fileID: 11400000, guid: cb461804d44382249957ba3eca906754, type: 2}
-  mouseInputLair: {fileID: 1427378509}
---- !u!114 &1427378509
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1427378505}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebfe06187ff9405468b94f0521f1c0f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MouseInputGrid
-  gridCam: {fileID: 509981393}
   gridLayer:
     serializedVersion: 2
     m_Bits: 8
   placedObjectLayer:
     serializedVersion: 2
     m_Bits: 128
-  mouseInputAction: {fileID: 241444535}
-  isMouseHeld: 0
+  grid: {fileID: 1534379619}
+  database: {fileID: 11400000, guid: cb461804d44382249957ba3eca906754, type: 2}
 --- !u!1 &1442069578
 GameObject:
   m_ObjectHideFlags: 0
@@ -2768,8 +2737,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1427378508}
-        m_TargetAssemblyTypeName: PlaceOnGrid, Assembly-CSharp
+      - m_Target: {fileID: 1427378510}
+        m_TargetAssemblyTypeName: LairBuildTool, LevelData
         m_MethodName: StartPlacement
         m_Mode: 3
         m_Arguments:

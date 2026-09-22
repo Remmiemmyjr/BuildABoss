@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class RecruitList 
 {
+    // TODO: Separate RecruitList as its own Data. Put the Selection logic on a Field Script (or just separate logic script whatever)
     // do i want a list or a dictionary?
     List<MinionClass> Recruits;
     List<MinionClass> RecruitsWaitList;

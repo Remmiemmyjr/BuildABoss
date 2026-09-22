@@ -29,6 +29,6 @@ public class SpawnMinion : MonoBehaviour
         OpponentProfileInstance instance = new OpponentProfileInstance(_minionToSpawn);
         OpponentController controller = newMinion.GetComponent<OpponentController>();
         controller.SetInstance(instance);
-        controller.opponentInstance.livingObject = newMinion;
+        controller.opponentInstance.GameObjectInstance = newMinion;
     }
 }

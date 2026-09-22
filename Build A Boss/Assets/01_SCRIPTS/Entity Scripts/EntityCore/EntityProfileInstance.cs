@@ -3,25 +3,26 @@ using UnityEngine;
 
 public class EntityProfileInstance
 {
-    public EntityClass entityDefinition;
-    public int currHP;
-    public int currMana;
-    public int level;
-    public GameObject livingObject;
+    public EntityClass EntityDefinition;
+    public int CurrHP;
+    public int CurrMana;
+    public int Level;
+    public GameObject GameObjectInstance;
+    public GameObject OverworldController; // change to class Controller
 
     public List<SpecialMove> KnownMoves;
-    public StatusConditionInstance statusCondition;
+    public StatusConditionInstance CurrStatusCondition;
 
     // Constructor
     public EntityProfileInstance(EntityClass _entityDefinition)
     {
-        entityDefinition = _entityDefinition;
+        EntityDefinition = _entityDefinition;
 
-        currHP = _entityDefinition.baseStats.maxHP;
-        currMana = _entityDefinition.baseStats.maxMana;
-        level = _entityDefinition.level;
+        CurrHP = _entityDefinition.baseStats.maxHP;
+        CurrMana = _entityDefinition.baseStats.maxMana;
+        Level = _entityDefinition.level;
 
         KnownMoves = _entityDefinition.knownMoves;
-        statusCondition = null;
+        CurrStatusCondition = null;
     }
 }
