@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Build A Boss/Lair/Asset")]
+[CreateAssetMenu(menuName = "Build A Boss/Lair/Normal Asset")]
 public class LairAsset : ScriptableObject
 {
     [field: SerializeField]
@@ -14,11 +14,18 @@ public class LairAsset : ScriptableObject
     private int currAmount;
     public event Action OnCurrAmountChanged;
 
+    public virtual void OnPlace() {}
+    public virtual void OnRemove() {}
 
 
     public int GetCurrAmount()
     {
         return currAmount;
+    }
+
+    public void SetCurrAmount(int _amount)
+    {
+        currAmount = _amount;
     }
 
     public void ChangeCurrAmountBy(int _amount)

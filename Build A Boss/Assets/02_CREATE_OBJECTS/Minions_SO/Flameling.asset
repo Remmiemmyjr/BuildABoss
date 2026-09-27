@@ -30,5 +30,6 @@ MonoBehaviour:
   species: {fileID: 11400000, guid: a3d2f2d09e9d31e479bc539feb165977, type: 2}
   gender: 0
   habitat: 3
-  lovedIngratiates: []
+  lovedIngratiates:
+  - {fileID: 11400000, guid: b79f3d27ba35a82429794c67521deb0b, type: 2}
   hatedIngratiates: []

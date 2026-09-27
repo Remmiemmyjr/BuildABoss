@@ -18,7 +18,7 @@ public static class BattleEntityFactory
     {
         BattleEntity bEntity = new BattleEntity(_opponent);
 
-        bEntity.CombatAI = DB_CombatAI.GetProfile[_opponent.AIType];
+        //bEntity.CombatAI = DB_CombatAI.GetProfile[_opponent.AIType];
 
         //bEntity.currHP = opponent.currHP;
         //bEntity.currMana = opponent.currMana;

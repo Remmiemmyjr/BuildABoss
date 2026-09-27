@@ -14,12 +14,14 @@ public class LairBuildTool : MonoBehaviour
     #region Placement Variables
     [SerializeField] private Grid grid;
     [SerializeField]  private LairAssetDatabase database;
+    //private LairAsset assetToPlace;
     private int selectedObjIndex = -1;
     private Vector3 lastPos;
     private Action OnPlaceAsset, OnFinishPlacing;
+    private ISelectableLairAsset currentSelectable;
     #endregion
 
-
+    // TODO: Will want a Persistant Lair data/instance to load and unload grid progress and other variables (min requirement met, etc)
 
     #region Unity Functions
     private void Update()
@@ -84,9 +86,21 @@ public class LairBuildTool : MonoBehaviour
         Ray ray = gridCam.ScreenPointToRay(mousePos);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, 600, placedObjectLayer))
+        if (Physics.Raycast(ray, out hit, 600, placedObjectLayer)
+            && hit.transform.TryGetComponent(out ISelectableLairAsset selectable))
         {
             Debug.Log("I should do something when you click me!");
+
+            if (currentSelectable != null && currentSelectable != selectable)
+                currentSelectable.OnDeselected();
+
+            currentSelectable = selectable;
+            currentSelectable.OnSelected();
+        }
+        else
+        {
+            currentSelectable?.OnDeselected();
+            currentSelectable = null;
         }
     }
     #endregion

@@ -7,6 +7,7 @@ public class UnitInfoHUD : MonoBehaviour
 {
     [SerializeField] TMP_Text nameText;
     [SerializeField] TMP_Text levelText;
+    [SerializeField] Image image;
     [SerializeField] HPBar hpBar;
     [SerializeField] ManaBar manaBar;
 
@@ -14,6 +15,7 @@ public class UnitInfoHUD : MonoBehaviour
     {
         nameText.text = battleUnit.Entity.displayName;
         levelText.text = "Lvl " + battleUnit.Entity.level;
+        image.sprite = battleUnit.Entity.sprite;
 
         battleUnit.OnHealthChanged += UpdateHPBar;
         battleUnit.OnManaChanged += UpdateManaBar;

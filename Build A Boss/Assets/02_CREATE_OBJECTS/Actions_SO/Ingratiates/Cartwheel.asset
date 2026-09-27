@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Cartwheel
   m_EditorClassIdentifier: MoveData::Ingratiate
   ingratiateName: Cartwheel
-  approvalBoost: 5
+  approvalBoost: 100
   effectiveSpecies: {fileID: 0}

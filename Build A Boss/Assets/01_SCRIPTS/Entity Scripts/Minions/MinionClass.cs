@@ -11,11 +11,9 @@ public class MinionClass : OpponentClass
     public Nations habitat;
     //public int approvalStat;
 
-
+    // map of <Ingratiate, struct(modifier, preference)>
     public List<Ingratiate> lovedIngratiates;
     public List<Ingratiate> hatedIngratiates;
 
     // dropped items list
-    // info about preferred methods of recruitment
-    // list of ingratiates that work
 }

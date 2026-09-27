@@ -1,28 +1,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EntityProfileInstance
+public abstract class EntityProfileInstance
 {
-    public EntityClass EntityDefinition;
+    public EntityClass BaseClass;
     public int CurrHP;
     public int CurrMana;
     public int Level;
     public GameObject GameObjectInstance;
     public GameObject OverworldController; // change to class Controller
-
+    public StatBlockDefinition Stats;
     public List<SpecialMove> KnownMoves;
     public StatusConditionInstance CurrStatusCondition;
 
     // Constructor
-    public EntityProfileInstance(EntityClass _entityDefinition)
+    public EntityProfileInstance(EntityClass _entityClass)
     {
-        EntityDefinition = _entityDefinition;
+        BaseClass = _entityClass;
+        Stats = _entityClass.baseStats;
+        CurrHP = _entityClass.baseStats.maxHP;
+        CurrMana = _entityClass.baseStats.maxMana;
+        Level = _entityClass.level;
 
-        CurrHP = _entityDefinition.baseStats.maxHP;
-        CurrMana = _entityDefinition.baseStats.maxMana;
-        Level = _entityDefinition.level;
-
-        KnownMoves = _entityDefinition.knownMoves;
+        KnownMoves = _entityClass.knownMoves;
         CurrStatusCondition = null;
     }
 }

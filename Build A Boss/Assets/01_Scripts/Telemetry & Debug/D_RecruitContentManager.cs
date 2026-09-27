@@ -9,35 +9,21 @@ public class D_RecruitContentManager : MonoBehaviour
     [SerializeField] private D_RecruitEntry entry;
     [SerializeField] private Transform container;
 
-
-    //private void OnEnable()
-    //{
-    //    RecruitList.RecruitAdded += GrabMinionFromList;
-    //}
-
-    //private void OnDisable()
-    //{
-    //    RecruitList.RecruitAdded -= GrabMinionFromList;
-    //}
-
     // Dynamic adding
-    public void GrabMinionFromList(MinionClass _minion)
+    public void GrabMinionFromList(MinionProfileInstance _minion)
     {
         var newEntry = Instantiate(entry, container);
-        newEntry.Setup(_minion.sprite, _minion.name, _minion.level);
+        newEntry.Setup(_minion.BaseClass.sprite, _minion.BaseClass.name, _minion.Level);
     }
-
-
-
 
     // Alternative, destroy and generate the list whenever debug ui is opened/closed. 100% reflective, but inefficient
     public void GenerateVisualList()
     {
-        List<MinionClass> recruitListCopy = PlayerRefGetter.Instance.PlayerInstance.RecruitList.GetListOfRecruits();
-        foreach (MinionClass _minion in recruitListCopy)
+        List<MinionProfileInstance> recruitListCopy = RecruitListManager.Instance.GetListOfRecruits();
+        foreach (MinionProfileInstance _minion in recruitListCopy)
         {
             var newEntry = Instantiate(entry, container);
-            newEntry.Setup(_minion.sprite, _minion.name, _minion.level);
+            newEntry.Setup(_minion.BaseClass.sprite, _minion.BaseClass.name, _minion.Level);
         }
     }
 

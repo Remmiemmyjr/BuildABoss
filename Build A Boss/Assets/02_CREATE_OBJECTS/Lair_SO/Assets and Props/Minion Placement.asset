@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LairAsset
   <Name>k__BackingField: Minion Placement
   <GridSize>k__BackingField: {x: 1, y: 1}
-  <Prefab>k__BackingField: {fileID: 919132149155446097, guid: 0e774818d2efd444ba903aaacb593a9b, type: 3}
+  <Prefab>k__BackingField: {fileID: 5829179846298922745, guid: fa22a087cde8b0643932b2fddfe07134, type: 3}

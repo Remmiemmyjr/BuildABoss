@@ -16,7 +16,7 @@ MonoBehaviour:
   level: 3
   sprite: {fileID: 21300000, guid: 72775a51010ea2f48ad2f631502e07e1, type: 3}
   baseStats:
-    maxHP: 50
+    maxHP: 100
     maxMana: 30
     attackDamage: 10
     defense: 10
@@ -27,7 +27,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e6b3185d04753c249accb0f7f2416575, type: 2}
   - {fileID: 11400000, guid: 2450c2ac8d0d25843bddb579b062faed, type: 2}
   learnableMoves: []
-  chosenNickname: The Boss
   reputation: 0
   knownIngratiates:
   - {fileID: 11400000, guid: 6e402ba58a2f642498b2b61f49ef13e3, type: 2}

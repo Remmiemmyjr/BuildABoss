@@ -1,0 +1,17 @@
+{
+    "name": "Field",
+    "rootNamespace": "",
+    "references": [
+        "GUID:41a45d371827a264a9ced372fe1ed370",
+        "GUID:b732185bb1236344c9866eb5158fbef7"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -26,7 +26,7 @@ public class BattleManager : MonoBehaviour
     [Header("Choice & Action Management")]
     private List<BattleAction> pendingActions = new();
     private Queue<BattleAction> actionQueue = new();
-    public MinionClass temporaryRecruit;
+    public MinionProfileInstance temporaryRecruit;
 
     [Header("Turns")]
     public int turnNumber;
@@ -137,6 +137,7 @@ public class BattleManager : MonoBehaviour
         actionQueue = new Queue<BattleAction>(pendingActions);
     }
 
+    // TODO: Resolved instead in the Battle Turn Sequencer to control dialogue output and action result timing
     private void ResolveActionQueue()
     {
         battleState = BattleState.ResolveTurn;
@@ -252,7 +253,7 @@ public class BattleManager : MonoBehaviour
 
     private IEnumerator UseDefend(BattleEntity _user, BattleEntity _reciever)
     {
-        // TODO: need better defend method later
+        // TODO: need better defend method later. All damage should be queued and evaluated before applied?
         _user.IsDefending = true;
         yield return TextTyper.TypeText(dialogue, $"{_user.Entity.displayName} defended against {_reciever.Entity.name}!");
         
@@ -308,15 +309,16 @@ public class BattleManager : MonoBehaviour
 
             case WhyBattleEnded.Victory:
                 yield return StartCoroutine(TextTyper.TypeText(dialogue, $"You won!"));
-                Destroy(GetOpponentUnit().Profile.GameObjectInstance);
+                Destroy(GetOpponentUnit().ProfileInstance.GameObjectInstance);
                 break;
 
             case WhyBattleEnded.Recruit:
-                temporaryRecruit = GetOpponentUnit().Entity as MinionClass;
+                temporaryRecruit = GetOpponentUnit().ProfileInstance as MinionProfileInstance;
                 //if (GetOpponentUnit().Entity is MinionClass recruit)
-                PlayerRefGetter.Instance.PlayerInstance.RecruitList.AddNewRecruit(temporaryRecruit);
+                //PlayerRefGetter.Instance.PlayerInstance.RecruitList.AddNewRecruit(temporaryRecruit);
+                RecruitListManager.Instance.AddNewRecruit(temporaryRecruit);
                 yield return StartCoroutine(TextTyper.TypeText(dialogue, $"You recruited {GetOpponentUnit().Entity.displayName}!"));
-                Destroy(GetOpponentUnit().Profile.GameObjectInstance);
+                Destroy(GetOpponentUnit().ProfileInstance.GameObjectInstance);
                 break;
         }
 

@@ -2,7 +2,11 @@
     "name": "Lair",
     "rootNamespace": "",
     "references": [
-        "GUID:d0e696f7152cb5f4e97a556bc910a91c"
+        "GUID:d0e696f7152cb5f4e97a556bc910a91c",
+        "GUID:6e17bb6e4536c934fadd83f4104f9f4f",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:41a45d371827a264a9ced372fe1ed370",
+        "GUID:b732185bb1236344c9866eb5158fbef7"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

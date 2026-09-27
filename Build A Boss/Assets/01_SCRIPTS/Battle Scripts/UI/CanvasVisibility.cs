@@ -1,5 +1,6 @@
 using UnityEngine;
 
+// TODO: Rename this, too vague
 public class CanvasVisibility : MonoBehaviour
 {
     public GameObject canvas;

@@ -10,13 +10,13 @@ public class BattleEntity
 
     #region Variables
     public EntityClass Entity { get; private set; }
-    public EntityProfileInstance Profile { get; set; }
-    public CombatAIProfile CombatAI;
+    public EntityProfileInstance ProfileInstance { get; set; }
+    public CombatAIProfile CombatAI { get; set; }
     public bool IsAlive => currHP > 0;
     public bool IsDefending = false; // TODO: hmmmm.... gotta be a better way to manage lmao
 
     [Header("Battle Info")]
-    public int level => Profile.Level; // saves memory, cant accidentally edit level
+    public int level => ProfileInstance.Level; // saves memory, cant accidentally edit level
     public int currHP;
     public int currMana;
     public List<SpecialMove> KnownMoves { get; private set; }
@@ -39,13 +39,13 @@ public class BattleEntity
     #region Constructor
     public BattleEntity(EntityProfileInstance _profile) 
     {
-        Profile = _profile;
-        Entity = _profile.EntityDefinition;
+        ProfileInstance = _profile;
+        Entity = _profile.BaseClass;
         currHP = _profile.CurrHP;
         currMana = _profile.CurrMana;
         statusCondition = _profile.CurrStatusCondition;
         KnownMoves = new List<SpecialMove>(_profile.KnownMoves);
-        RuntimeStats = new StatBlock(Entity.baseStats); // needs to change to _profile
+        RuntimeStats = new StatBlock(_profile.BaseClass.baseStats);
     }
     #endregion
 
@@ -53,6 +53,7 @@ public class BattleEntity
     #region Battle Operations
     public void TakeDamage(int damage)
     {
+        // All damage should be queued and evaluated before applied?
         // TODO: Damage should be influenced by entity stats
         currHP -= (damage >= currHP)? currHP : damage;
 
