@@ -9,14 +9,14 @@ public class BattleEntity
     // TODO: Set visual data at some point (sprite n whatnot)
 
     #region Variables
-    public EntityClass Entity { get; private set; }
-    public EntityProfileInstance ProfileInstance { get; set; }
+    //public EntityData Entity { get; private set; }
+    public EntityProfileInstance EntityProfile { get; set; }
     public CombatAIProfile CombatAI { get; set; }
     public bool IsAlive => currHP > 0;
     public bool IsDefending = false; // TODO: hmmmm.... gotta be a better way to manage lmao
 
     [Header("Battle Info")]
-    public int level => ProfileInstance.Level; // saves memory, cant accidentally edit level
+    public int level => EntityProfile.Level; // saves memory, cant accidentally edit level
     public int currHP;
     public int currMana;
     public List<SpecialMove> KnownMoves { get; private set; }
@@ -39,13 +39,12 @@ public class BattleEntity
     #region Constructor
     public BattleEntity(EntityProfileInstance _profile) 
     {
-        ProfileInstance = _profile;
-        Entity = _profile.BaseClass;
+        EntityProfile = _profile;
         currHP = _profile.CurrHP;
         currMana = _profile.CurrMana;
         statusCondition = _profile.CurrStatusCondition;
         KnownMoves = new List<SpecialMove>(_profile.KnownMoves);
-        RuntimeStats = new StatBlock(_profile.BaseClass.baseStats);
+        RuntimeStats = new StatBlock(_profile.Entity.baseStats);
     }
     #endregion
 
@@ -65,9 +64,9 @@ public class BattleEntity
     public void Heal(int amount)
     {
         // TODO: Change all Enitty.baseStats instances to grab from Profile
-        if (currHP >= Entity.baseStats.maxHP)
+        if (currHP >= EntityProfile.Stats.maxHP)
             return;
-        amount = Mathf.Clamp(amount, 0, Entity.baseStats.maxHP - currHP);
+        amount = Mathf.Clamp(amount, 0, EntityProfile.Stats.maxHP - currHP);
 
         currHP += amount;
 
@@ -89,7 +88,7 @@ public class BattleEntity
     public void RestoreMana(int amount)
     {
         // TODO: pathetic
-        if (currMana >= Entity.baseStats.maxMana)
+        if (currMana >= EntityProfile.Stats.maxMana)
             return;
 
         currMana += amount;
@@ -114,8 +113,8 @@ public class BattleEntity
 
     public void ResetAll()
     {
-        currHP = Entity.baseStats.maxHP;
-        currMana = Entity.baseStats.maxMana;
+        currHP = EntityProfile.Stats.maxHP;
+        currMana = EntityProfile.Stats.maxMana;
         RemoveStatusEffect();
     }
     #endregion

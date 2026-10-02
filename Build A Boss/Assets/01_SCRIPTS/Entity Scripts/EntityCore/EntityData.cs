@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class EntityClass : ScriptableObject
+public abstract class EntityData : ScriptableObject
 {
     #region Variables
     [Header("Basic Info")]

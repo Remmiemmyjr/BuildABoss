@@ -6,7 +6,7 @@ using System;
 
 public static class IngratiateResolver
 {
-    public static void UseIngratiate(Ingratiate _ingratiate, MinionClass _opponent)
+    public static void UseIngratiate(Ingratiate _ingratiate, MinionData _opponent)
     {
         if (_ingratiate == _opponent.lovedIngratiates.Find(item => item.ingratiateName == _ingratiate.ingratiateName))
         {

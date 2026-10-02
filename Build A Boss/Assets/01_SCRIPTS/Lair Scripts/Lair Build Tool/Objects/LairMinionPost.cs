@@ -35,7 +35,7 @@ public class LairMinionPost : MonoBehaviour, ISelectableLairAsset
     void AssignToPost(MinionProfileInstance _minion)
     {
         assignedMinion = _minion;
-        displaySprite.sprite = _minion.BaseClass.sprite;
+        displaySprite.sprite = _minion.Entity.sprite;
         Debug.Log("You clicked the entry!!!!!!!");
         // assign minion to spot
     }

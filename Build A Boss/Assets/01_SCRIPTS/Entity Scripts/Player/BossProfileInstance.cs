@@ -15,7 +15,7 @@ public class BossProfileInstance : EntityProfileInstance
     #endregion
 
     // Constructor
-    public BossProfileInstance(BossClass _bossClass) : base(_bossClass)
+    public BossProfileInstance(BossData _bossClass) : base(_bossClass)
     {
         //BossClass = _bossClass;
         Level = 1;

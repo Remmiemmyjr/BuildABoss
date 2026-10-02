@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnMinion : MonoBehaviour
 {
-    public List<MinionClass> minionsThatCanSpawn;
+    public List<MinionData> minionsThatCanSpawn;
     public GameObject prefab; // TODO: Dictionary/map of minions to spawn, Prefab & Quantity?
     public List<Transform> listOfSpawnpoints;
 
@@ -22,7 +22,7 @@ public class SpawnMinion : MonoBehaviour
     //    controller.SetInstance(instance);
     //}
 
-    public void SpawnRandomMinion(Transform _spawnPoint, MinionClass _minionToSpawn)
+    public void SpawnRandomMinion(Transform _spawnPoint, MinionData _minionToSpawn)
     {
         GameObject newMinion = Instantiate(prefab, _spawnPoint.position, Quaternion.identity);
         newMinion.GetComponent<SpriteRenderer>().sprite = _minionToSpawn.sprite;

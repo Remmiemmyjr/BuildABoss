@@ -3,7 +3,7 @@ using UnityEngine;
 
 public abstract class EntityProfileInstance
 {
-    public EntityClass BaseClass;
+    public EntityData Entity;
     public int CurrHP;
     public int CurrMana;
     public int Level;
@@ -14,9 +14,9 @@ public abstract class EntityProfileInstance
     public StatusConditionInstance CurrStatusCondition;
 
     // Constructor
-    public EntityProfileInstance(EntityClass _entityClass)
+    public EntityProfileInstance(EntityData _entityClass)
     {
-        BaseClass = _entityClass;
+        Entity = _entityClass;
         Stats = _entityClass.baseStats;
         CurrHP = _entityClass.baseStats.maxHP;
         CurrMana = _entityClass.baseStats.maxMana;

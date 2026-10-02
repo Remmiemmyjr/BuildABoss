@@ -81,7 +81,7 @@ public class BattleManager : MonoBehaviour
         GetComponent<InitSpMoveHUD>().InitSpMoveButtons(player.KnownMoves);
         GetComponent<InitIngratiateHUD>().InitIngratiateButtons(PlayerRefGetter.Instance.PlayerInstance.KnownIngratiates);
 
-        yield return StartCoroutine(TextTyper.TypeText(dialogue, $"{opponent.Entity.displayName} challenges you to a fight!"));
+        yield return StartCoroutine(TextTyper.TypeText(dialogue, $"{opponent.EntityProfile.Entity.displayName} challenges you to a fight!"));
 
         StartPlayerSelection();
     }
@@ -218,7 +218,7 @@ public class BattleManager : MonoBehaviour
         {
             battleState = BattleState.AfterEffects;
             // TODO: get rid of this
-            yield return TextTyper.TypeText(dialogue, $"{opponentUnit.Entity.name} was burned!");
+            yield return TextTyper.TypeText(dialogue, $"{opponentUnit.EntityProfile.Entity.displayName} was burned!");
 
             StatusResolver.OnAfterTurn(playerUnit, Context);
             StatusResolver.OnAfterTurn(opponentUnit, Context);
@@ -239,9 +239,9 @@ public class BattleManager : MonoBehaviour
     #region Use Action
     private IEnumerator UseAttack(BattleEntity _user, BattleEntity _reciever)
     {
-        yield return TextTyper.TypeText(dialogue, $"{_user.Entity.displayName} attacked {_reciever.Entity.name}!");
+        yield return TextTyper.TypeText(dialogue, $"{_user.EntityProfile.Entity.displayName} attacked {_reciever.EntityProfile.Entity.displayName}!");
         // TODO: temporary stupid logic for recieving defend
-        _reciever.TakeDamage(_reciever.IsDefending ? _user.Entity.baseStats.attackDamage / 2 : _user.Entity.baseStats.attackDamage);
+        _reciever.TakeDamage(_reciever.IsDefending ? _user.EntityProfile.Stats.attackDamage / 2 : _user.EntityProfile.Stats.attackDamage);
 
         if (actionQueue.Count <= 0 || !_reciever.IsAlive)
             EndTurn();
@@ -255,7 +255,7 @@ public class BattleManager : MonoBehaviour
     {
         // TODO: need better defend method later. All damage should be queued and evaluated before applied?
         _user.IsDefending = true;
-        yield return TextTyper.TypeText(dialogue, $"{_user.Entity.displayName} defended against {_reciever.Entity.name}!");
+        yield return TextTyper.TypeText(dialogue, $"{_user.EntityProfile.Entity.displayName} defended against {_reciever.EntityProfile.Entity.displayName}!");
         
         if (actionQueue.Count <= 0)
             EndTurn();
@@ -265,11 +265,11 @@ public class BattleManager : MonoBehaviour
 
     private IEnumerator UseSpecialMove(BattleEntity _user, BattleEntity _reciever, SpecialMove _move)
     {
-        yield return TextTyper.TypeText(dialogue, $"{_user.Entity.displayName} used {_move.moveName}!");
+        yield return TextTyper.TypeText(dialogue, $"{_user.EntityProfile.Entity.displayName} used {_move.moveName}!");
  
         bool moveSuccess = MoveResolver.UseMove(_user, _reciever, _move);
 
-        yield return TextTyper.TypeText(dialogue, $"{_reciever.Entity.name} was inflicted with burning!");
+        yield return TextTyper.TypeText(dialogue, $"{_reciever.EntityProfile.Entity.displayName} was inflicted with burning!");
 
         if (actionQueue.Count <= 0 || !_reciever.IsAlive)
             EndTurn();
@@ -279,10 +279,10 @@ public class BattleManager : MonoBehaviour
 
     private IEnumerator UseIngratiate(BattleEntity _user, BattleEntity _reciever, Ingratiate _ingratiate)
     {
-        yield return TextTyper.TypeText(dialogue, $"{_user.Entity.displayName} tried to boost their Approval!");
+        yield return TextTyper.TypeText(dialogue, $"{_user.EntityProfile.Entity.displayName} tried to boost their Approval!");
 
         // evaluate if reciever liked it or not
-        MinionClass minion = (MinionClass)_reciever.Entity;
+        MinionData minion = (MinionData)_reciever.EntityProfile.Entity;
         if(minion)
         {
             IngratiateResolver.UseIngratiate(_ingratiate, minion);
@@ -304,21 +304,21 @@ public class BattleManager : MonoBehaviour
         switch (_why)
         {
             case WhyBattleEnded.Defeat:
-                yield return StartCoroutine(TextTyper.TypeText(dialogue, $"You lost to {GetOpponentUnit().Entity.displayName} :("));
+                yield return StartCoroutine(TextTyper.TypeText(dialogue, $"You lost to {GetOpponentUnit().EntityProfile.Entity.displayName} :("));
                 break;
 
             case WhyBattleEnded.Victory:
                 yield return StartCoroutine(TextTyper.TypeText(dialogue, $"You won!"));
-                Destroy(GetOpponentUnit().ProfileInstance.GameObjectInstance);
+                Destroy(GetOpponentUnit().EntityProfile.GameObjectInstance);
                 break;
 
             case WhyBattleEnded.Recruit:
-                temporaryRecruit = GetOpponentUnit().ProfileInstance as MinionProfileInstance;
+                temporaryRecruit = GetOpponentUnit().EntityProfile as MinionProfileInstance;
                 //if (GetOpponentUnit().Entity is MinionClass recruit)
                 //PlayerRefGetter.Instance.PlayerInstance.RecruitList.AddNewRecruit(temporaryRecruit);
                 RecruitListManager.Instance.AddNewRecruit(temporaryRecruit);
-                yield return StartCoroutine(TextTyper.TypeText(dialogue, $"You recruited {GetOpponentUnit().Entity.displayName}!"));
-                Destroy(GetOpponentUnit().ProfileInstance.GameObjectInstance);
+                yield return StartCoroutine(TextTyper.TypeText(dialogue, $"You recruited {GetOpponentUnit().EntityProfile.Entity.displayName}!"));
+                Destroy(GetOpponentUnit().EntityProfile.GameObjectInstance);
                 break;
         }
 

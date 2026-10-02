@@ -6,7 +6,7 @@ public class PlayerRefGetter : MonoBehaviour
     public BossProfileInstance PlayerInstance { get; private set; }
 
     [SerializeField]
-    private BossClass bossClass;
+    private BossData bossClass;
 
     private void Awake()
     {

@@ -11,7 +11,7 @@ public class MinionProfileInstance : OpponentProfileInstance
         // Dialogue Table
     }
 
-    public MinionProfileInstance(MinionClass _minionClass) : base(_minionClass)
+    public MinionProfileInstance(MinionData _minionClass) : base(_minionClass)
     {
 
     }

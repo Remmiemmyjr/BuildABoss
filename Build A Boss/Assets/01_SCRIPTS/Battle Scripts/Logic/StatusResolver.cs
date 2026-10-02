@@ -37,49 +37,49 @@ public static class StatusResolver
         {
             // Physical Afflictions
             case StatusConditionTypes.Burned:
-                unit.TakeDamage(unit.Entity.baseStats.maxHP / 8);
+                unit.TakeDamage(unit.EntityProfile.Stats.maxHP / 8);
                 break;
 
             case StatusConditionTypes.Freezing:
-                unit.TakeDamage(unit.Entity.baseStats.maxHP / 8);
+                unit.TakeDamage(unit.EntityProfile.Stats.maxHP / 8);
                 break;
 
             case StatusConditionTypes.Poisoned:
-                unit.TakeDamage(unit.Entity.baseStats.maxHP / 8);
+                unit.TakeDamage(unit.EntityProfile.Stats.maxHP / 8);
                 break;
 
             case StatusConditionTypes.Bleeding:
-                unit.TakeDamage(unit.Entity.baseStats.maxHP / 8);
+                unit.TakeDamage(unit.EntityProfile.Stats.maxHP / 8);
                 break;
 
             case StatusConditionTypes.Paralyzed:
-                unit.TakeDamage(unit.Entity.baseStats.maxHP / 8);
+                unit.TakeDamage(unit.EntityProfile.Stats.maxHP / 8);
                 break;
 
             case StatusConditionTypes.Blinded:
-                unit.TakeDamage(unit.Entity.baseStats.maxHP / 8);
+                unit.TakeDamage(unit.EntityProfile.Stats.maxHP / 8);
                 break;
 
 
             // Mental Afflictions
             case StatusConditionTypes.Dread:
-                unit.TakeDamage(unit.Entity.baseStats.maxHP / 8);
+                unit.TakeDamage(unit.EntityProfile.Stats.maxHP / 8);
                 break;
 
             case StatusConditionTypes.Baffled:
-                unit.TakeDamage(unit.Entity.baseStats.maxHP / 8);
+                unit.TakeDamage(unit.EntityProfile.Stats.maxHP / 8);
                 break;
 
             case StatusConditionTypes.Depressed:
-                unit.TakeDamage(unit.Entity.baseStats.maxHP / 8);
+                unit.TakeDamage(unit.EntityProfile.Stats.maxHP / 8);
                 break;
 
             case StatusConditionTypes.Pissed:
-                unit.TakeDamage(unit.Entity.baseStats.maxHP / 8);
+                unit.TakeDamage(unit.EntityProfile.Stats.maxHP / 8);
                 break;
 
             case StatusConditionTypes.Cringe:
-                unit.TakeDamage(unit.Entity.baseStats.maxHP / 8);
+                unit.TakeDamage(unit.EntityProfile.Stats.maxHP / 8);
                 break;
         }
     }

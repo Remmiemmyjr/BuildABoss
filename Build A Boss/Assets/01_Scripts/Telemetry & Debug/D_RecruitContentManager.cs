@@ -13,7 +13,7 @@ public class D_RecruitContentManager : MonoBehaviour
     public void GrabMinionFromList(MinionProfileInstance _minion)
     {
         var newEntry = Instantiate(entry, container);
-        newEntry.Setup(_minion.BaseClass.sprite, _minion.BaseClass.name, _minion.Level);
+        newEntry.Setup(_minion.Entity.sprite, _minion.Entity.name, _minion.Level);
     }
 
     // Alternative, destroy and generate the list whenever debug ui is opened/closed. 100% reflective, but inefficient
@@ -23,7 +23,7 @@ public class D_RecruitContentManager : MonoBehaviour
         foreach (MinionProfileInstance _minion in recruitListCopy)
         {
             var newEntry = Instantiate(entry, container);
-            newEntry.Setup(_minion.BaseClass.sprite, _minion.BaseClass.name, _minion.Level);
+            newEntry.Setup(_minion.Entity.sprite, _minion.Entity.name, _minion.Level);
         }
     }
 

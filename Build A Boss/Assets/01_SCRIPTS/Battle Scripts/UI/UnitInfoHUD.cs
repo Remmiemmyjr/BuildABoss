@@ -13,24 +13,24 @@ public class UnitInfoHUD : MonoBehaviour
 
     public void SetData(BattleEntity battleUnit)
     {
-        nameText.text = battleUnit.Entity.displayName;
-        levelText.text = "Lvl " + battleUnit.Entity.level;
-        image.sprite = battleUnit.Entity.sprite;
+        nameText.text = battleUnit.EntityProfile.Entity.displayName;
+        levelText.text = "Lvl " + battleUnit.EntityProfile.Level;
+        //image.sprite = battleUnit.EntityProfile.Entity.sprite;
 
         battleUnit.OnHealthChanged += UpdateHPBar;
         battleUnit.OnManaChanged += UpdateManaBar;
 
-        hpBar.InitHPBar((float)battleUnit.currHP / battleUnit.Entity.baseStats.maxHP);
-        manaBar?.InitManaBar((float)battleUnit.currMana / battleUnit.Entity.baseStats.maxMana);
+        hpBar.InitHPBar((float)battleUnit.currHP / battleUnit.EntityProfile.Stats.maxHP);
+        manaBar?.InitManaBar((float)battleUnit.currMana / battleUnit.EntityProfile.Stats.maxMana);
     }
 
     public void UpdateHPBar(BattleEntity battleUnit)
     {
-        hpBar.SetHP((float)battleUnit.currHP / battleUnit.Entity.baseStats.maxHP);
+        hpBar.SetHP((float)battleUnit.currHP / battleUnit.EntityProfile.Stats.maxHP);
     }
 
     public void UpdateManaBar(BattleEntity battleUnit)
     {
-        manaBar?.SetMana((float)battleUnit.currMana / battleUnit.Entity.baseStats.maxMana);
+        manaBar?.SetMana((float)battleUnit.currMana / battleUnit.EntityProfile.Stats.maxMana);
     }
 }

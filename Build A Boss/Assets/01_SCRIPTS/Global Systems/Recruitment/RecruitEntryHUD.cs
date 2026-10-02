@@ -14,9 +14,9 @@ public class RecruitEntryHUD : MonoBehaviour, IRecruitEntryViewBlock
 
     public void Bind(MinionProfileInstance _minion, Action<MinionProfileInstance> _onSelected)
     {
-        image.sprite = _minion.BaseClass.sprite;
-        displayName.SetText(_minion.BaseClass.name);
-        level.SetText($"Lvl: {_minion.BaseClass.level.ToString()}");
+        image.sprite = _minion.Entity.sprite;
+        displayName.SetText(_minion.Entity.name);
+        level.SetText($"Lvl: {_minion.Entity.level.ToString()}");
 
         button.onClick.RemoveAllListeners();
         if (_onSelected != null)

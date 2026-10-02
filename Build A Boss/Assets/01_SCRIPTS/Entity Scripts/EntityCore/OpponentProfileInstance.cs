@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class OpponentProfileInstance : EntityProfileInstance
 {
-    public OpponentClass MyOpponentClass;
-    public OpponentAITypes AIType => MyOpponentClass.combatAIType;
+    public OpponentData Opponent;
+    public OpponentAITypes AIType => Opponent.combatAIType;
 
-    public OpponentProfileInstance(OpponentClass _opponentClass) : base(_opponentClass)
+    public OpponentProfileInstance(OpponentData _opponentClass) : base(_opponentClass)
     {
-        MyOpponentClass = _opponentClass;
+        Opponent = _opponentClass;
     }
 }

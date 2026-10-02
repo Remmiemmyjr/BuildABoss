@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 
 [CreateAssetMenu(menuName = "Build A Boss/Entities/Minion")]
-public class MinionClass : OpponentClass
+public class MinionData : OpponentData
 {
     [Header("Minion Info")]
     public SpeciesType species;
