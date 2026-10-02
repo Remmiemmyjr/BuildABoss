@@ -1163,7 +1163,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 484544553167029174, guid: 1a9a37d68ab1bf14bacb3cf56aa76842, type: 3}
   m_PrefabInstance: {fileID: 701312884799663939}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 701312884799663940}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d98fdd81455e32041ade49ad6249c59f, type: 3}
@@ -4529,6 +4529,74 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7878350319992209165, guid: b218bc0395408234ebe9bfaa76295391, type: 3}
   m_PrefabInstance: {fileID: 709486885}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &712302481 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 427200411032025267, guid: 1a9a37d68ab1bf14bacb3cf56aa76842, type: 3}
+  m_PrefabInstance: {fileID: 701312884799663939}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &712302485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712302481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cf9594e2a3b8eb4eaf3cc57f263076f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TMPEffects::TMPEffects.Components.TMPWriter
+  OnTextEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCharacterShown:
+    m_PersistentCalls:
+      m_Calls: []
+  OnStartWriter:
+    m_PersistentCalls:
+      m_Calls: []
+  OnStopWriter:
+    m_PersistentCalls:
+      m_Calls: []
+  OnWaitStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnWaitEnded:
+    m_PersistentCalls:
+      m_Calls: []
+  OnFinishWriter:
+    m_PersistentCalls:
+      m_Calls: []
+  OnSkipWriter:
+    m_PersistentCalls:
+      m_Calls: []
+  OnResetWriter:
+    m_PersistentCalls:
+      m_Calls: []
+  keywordDatabase: {fileID: 0}
+  sceneKeywordDatabase: {fileID: 0}
+  database: {fileID: 0}
+  maySkip: 1
+  writeOnStart: 1
+  writeOnNewText: 1
+  useScaledTime: 1
+  delays:
+    delay: 0.035
+    whitespaceDelay: 0
+    whitespaceDelayType: 0
+    linebreakDelay: 0
+    linebreakDelayType: 0
+    punctuationDelay: 0
+    punctuationDelayType: 0
+    visibleDelay: 0
+    visibleDelayType: 0
+  sceneCommands:
+    _serializedList: []
+  useDefaultDatabase: 0
+  useDefaultKeywordDatabase: 0
+  initDatabase: 1
+  eventsEnabled: 0
+  commandsEnabled: 1
 --- !u!1001 &721370012
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14023,6 +14091,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6801486884379317888, guid: 1a9a37d68ab1bf14bacb3cf56aa76842, type: 3}
+      propertyPath: sequencer
+      value: 
+      objectReference: {fileID: 701312884799663943}
     - target: {fileID: 6830180052874483575, guid: 1a9a37d68ab1bf14bacb3cf56aa76842, type: 3}
       propertyPath: m_Layer
       value: 5
@@ -14178,8 +14250,60 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1553904380247677157, guid: 1a9a37d68ab1bf14bacb3cf56aa76842, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 701312884799663943}
+    - targetCorrespondingSourceObject: {fileID: 1553904380247677157, guid: 1a9a37d68ab1bf14bacb3cf56aa76842, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 701312884799663942}
+    - targetCorrespondingSourceObject: {fileID: 427200411032025267, guid: 1a9a37d68ab1bf14bacb3cf56aa76842, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 712302485}
   m_SourcePrefab: {fileID: 100100000, guid: 1a9a37d68ab1bf14bacb3cf56aa76842, type: 3}
+--- !u!1 &701312884799663940 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1553904380247677157, guid: 1a9a37d68ab1bf14bacb3cf56aa76842, type: 3}
+  m_PrefabInstance: {fileID: 701312884799663939}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &701312884799663941 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8220839211085417423, guid: 1a9a37d68ab1bf14bacb3cf56aa76842, type: 3}
+  m_PrefabInstance: {fileID: 701312884799663939}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712302481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!114 &701312884799663942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 701312884799663940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d067ee7e25fc2842bf2308e2e392b22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Combat::BattleLogWriter
+  battleLogText: {fileID: 701312884799663941}
+  writer: {fileID: 712302485}
+--- !u!114 &701312884799663943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 701312884799663940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef56adada9f5666498aa07762a551054, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Combat::BattleSequencer
+  battleLogWriter: {fileID: 701312884799663942}
 --- !u!1001 &2597888255398495760
 PrefabInstance:
   m_ObjectHideFlags: 0

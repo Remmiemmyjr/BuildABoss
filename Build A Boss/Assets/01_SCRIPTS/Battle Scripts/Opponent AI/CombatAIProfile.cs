@@ -19,7 +19,7 @@ public abstract class CombatAIProfile : ScriptableObject
 
     //public abstract BattleAction IntelligientActionSelection(BattleEntity self, BattleContext context);
 
-    public virtual BattleActionType SimpleActionSelection(BattleEntity self, BattleContext context)
+    public virtual BattleActionType SimpleActionSelection(BattleEntity self)
     {
         int totalWeight = actionWeights.Sum(a  => a.weight);
 
@@ -40,7 +40,7 @@ public abstract class CombatAIProfile : ScriptableObject
         return BattleActionType.Attack;
     }
 
-    public SpecialMove SelectSpecialMove(BattleEntity self, BattleContext context)
+    public SpecialMove SelectSpecialMove(BattleEntity self)
     {
         int index = Random.Range(0, self.KnownMoves.Count - 1);
         return self.KnownMoves[index];

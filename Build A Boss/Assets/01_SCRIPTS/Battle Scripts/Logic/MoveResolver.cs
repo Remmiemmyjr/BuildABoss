@@ -12,7 +12,7 @@ public static class MoveResolver
         _user.UseMana(_move.manaCost);
         if (_move.power > 0)
         {
-            _target.TakeDamage(_move.power / 3);
+            _target.ComputeIncomingDamage(_move.power / 3);
         }
 
         //foreach (MoveBehavior effect in move.effects)

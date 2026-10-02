@@ -77,14 +77,14 @@ public class ChoiceManager : MonoBehaviour
     }
     public void OnSelectIngratiate()
     {
-        if (BattleManager.Instance.Context.Approval >= 100)
+        if (BattleManager.Instance.approval >= 100)
             return;
         UpdateMenu(BattleMenuState.Ingratiates);
     }
     public void OnRecruit()
     {
         UpdateMenu(BattleMenuState.Over);
-        StartCoroutine(BattleManager.Instance.EndBattle(WhyBattleEnded.Recruit));
+        BattleManager.Instance.EndBattle(WhyBattleEnded.Recruit);
     }
     #endregion
 

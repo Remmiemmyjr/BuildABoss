@@ -6,12 +6,12 @@ public class ApprovalBarDisplay : MonoBehaviour
 
     public void SetData()
     {
-        approvalBar?.InitApprovalBar((float)BattleManager.Instance.Context.Approval / 100);
+        approvalBar?.InitApprovalBar((float)BattleManager.Instance.approval / 100);
         BattleManager.Instance.ApprovalChanged += UpdateApprovalBar;
     }
 
     public void UpdateApprovalBar()
     {
-        approvalBar?.SetApproval((float)BattleManager.Instance.Context.Approval / 100);
+        approvalBar?.SetApproval((float)BattleManager.Instance.approval / 100);
     }
 }

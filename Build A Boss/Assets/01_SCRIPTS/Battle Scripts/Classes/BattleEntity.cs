@@ -11,18 +11,24 @@ public class BattleEntity
     #region Variables
     //public EntityData Entity { get; private set; }
     public EntityProfileInstance EntityProfile { get; set; }
+    public string Name { get; set; }
     public CombatAIProfile CombatAI { get; set; }
     public bool IsAlive => currHP > 0;
     public bool IsDefending = false; // TODO: hmmmm.... gotta be a better way to manage lmao
 
     [Header("Battle Info")]
-    public int level => EntityProfile.Level; // saves memory, cant accidentally edit level
+    public int level => EntityProfile.Level;
     public int currHP;
     public int currMana;
     public List<SpecialMove> KnownMoves { get; private set; }
     public StatusConditionInstance statusCondition;
     public StatBlock RuntimeStats; // protected or private?
 
+    [Header("Computations")]
+    private int pendingDamage;
+    public void ComputeIncomingDamage(int _amount) => pendingDamage += _amount;
+
+    [Header("Stats")]
     // Lambda Getters of Base Stats, for ease of access (could just use RuntimeStats)
     public int AttackDamage => GetStatWithModifier(StatType.AttackDamage);
     public int Defense => GetStatWithModifier(StatType.Defense);
@@ -40,6 +46,7 @@ public class BattleEntity
     public BattleEntity(EntityProfileInstance _profile) 
     {
         EntityProfile = _profile;
+        Name = _profile.Entity.displayName;
         currHP = _profile.CurrHP;
         currMana = _profile.CurrMana;
         statusCondition = _profile.CurrStatusCondition;
@@ -50,13 +57,15 @@ public class BattleEntity
 
 
     #region Battle Operations
-    public void TakeDamage(int damage)
+
+    public void ApplyDamage()
     {
         // All damage should be queued and evaluated before applied?
         // TODO: Damage should be influenced by entity stats
-        currHP -= (damage >= currHP)? currHP : damage;
-
-        damage = Mathf.Clamp(damage, 0, currHP);
+        int finalDmg = IsDefending ? pendingDamage / 2 : pendingDamage;
+        finalDmg = Mathf.Min(finalDmg, currHP);
+        currHP -= finalDmg;
+        pendingDamage = 0;
 
         OnHealthChanged?.Invoke(this);
     }

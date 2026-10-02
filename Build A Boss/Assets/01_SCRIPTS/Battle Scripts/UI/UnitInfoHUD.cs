@@ -15,7 +15,7 @@ public class UnitInfoHUD : MonoBehaviour
     {
         nameText.text = battleUnit.EntityProfile.Entity.displayName;
         levelText.text = "Lvl " + battleUnit.EntityProfile.Level;
-        //image.sprite = battleUnit.EntityProfile.Entity.sprite;
+        image.sprite = battleUnit.EntityProfile.Entity.sprite;
 
         battleUnit.OnHealthChanged += UpdateHPBar;
         battleUnit.OnManaChanged += UpdateManaBar;

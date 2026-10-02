@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 
@@ -22,6 +23,7 @@ public class BattleManager : MonoBehaviour
     [Header("Dialogue References")]
     [SerializeField] GameObject dialogueBox;
     public TMP_Text dialogue; // TODO: will probably have battle log manage this instead
+    [SerializeField] private BattleSequencer sequencer;
 
     [Header("Choice & Action Management")]
     private List<BattleAction> pendingActions = new();
@@ -44,7 +46,8 @@ public class BattleManager : MonoBehaviour
 
     private void HandleBattleRequest(OpponentProfileInstance _instance, bool _isHero)
     {
-        StartCoroutine(BeginBattle(_instance, _isHero));
+        //StartCoroutine(BeginBattle(_instance, _isHero));
+        BeginBattle(_instance, _isHero);
     }
 
     private void OnEnable()
@@ -59,7 +62,7 @@ public class BattleManager : MonoBehaviour
     }
 
     // Temporarily a coroutine, should not have to be if I can make the battle log help with state delays
-    public IEnumerator BeginBattle(OpponentProfileInstance _opponentProfile, bool _isHero)
+    public async void BeginBattle(OpponentProfileInstance _opponentProfile, bool _isHero)
     {
         turnNumber = 0;
         approval = 0;
@@ -70,8 +73,6 @@ public class BattleManager : MonoBehaviour
         SetPlayerUnit(player);
         SetOpponentUnit(opponent);
 
-        Context = new BattleContext(player, opponent);
-
         BattleEvents.BattleStarted.Invoke();
 
         transform.Find("BattleCanvas/PlayerHUD").GetComponent<UnitInfoHUD>().SetData(player);
@@ -81,9 +82,10 @@ public class BattleManager : MonoBehaviour
         GetComponent<InitSpMoveHUD>().InitSpMoveButtons(player.KnownMoves);
         GetComponent<InitIngratiateHUD>().InitIngratiateButtons(PlayerRefGetter.Instance.PlayerInstance.KnownIngratiates);
 
-        yield return StartCoroutine(TextTyper.TypeText(dialogue, $"{opponent.EntityProfile.Entity.displayName} challenges you to a fight!"));
+        //yield return StartCoroutine(TextTyper.TypeText(dialogue, $"{opponent.EntityProfile.Entity.displayName} challenges you to a fight!"));
+        await sequencer.StartBattle(opponentUnit);
 
-        StartPlayerSelection();
+        await StartPlayerSelection();
     }
     #endregion
 
@@ -92,21 +94,22 @@ public class BattleManager : MonoBehaviour
     // ----------------------------------------------------------------------------------------------------------
     #region Battle Turn Pipeline
 
-    public void StartPlayerSelection()
+    public async Task StartPlayerSelection()
     {
         NewTurn.Invoke(BattleMenuState.SelectionMenu);
-        StartCoroutine(TextTyper.TypeText(dialogue, $"What will you do?"));
+        //StartCoroutine(TextTyper.TypeText(dialogue, $"What will you do?"));
         battleState = BattleState.PlayerChoosingAction;
+        await sequencer.PromptSelection();
     }
 
     public void ConstructAction(BattleActionType _type, SpecialMove _move = null, Ingratiate _ingratiate = null)
     {
         BattleAction action = new BattleAction(_type, playerUnit, opponentUnit, _move, _ingratiate);
 
-        SubmitPlayerAction(action);
+        SubmitAction(action);
     }
 
-    public void SubmitPlayerAction(BattleAction _action)
+    public async void SubmitAction(BattleAction _action)
     {
         if (battleState != BattleState.PlayerChoosingAction)
             return;
@@ -117,7 +120,9 @@ public class BattleManager : MonoBehaviour
 
         ChooseOpponentAction();
         BuildActionQueue();
-        ResolveActionQueue();
+
+        await sequencer.RunTurn(actionQueue);
+        EvaluateNextState();
     }
 
     void ChooseOpponentAction()
@@ -131,58 +136,15 @@ public class BattleManager : MonoBehaviour
     void BuildActionQueue()
     {
         // TODO: Should Defend always go first, or fail if it's last in order?
-        pendingActions.Sort((a, b) => a.user.Speed);
+                                   // a.user.Speed
+        pendingActions.Sort((a, b) => b.user.Speed.CompareTo(a.user.Speed));
 
         pendingActions.Reverse();
         actionQueue = new Queue<BattleAction>(pendingActions);
     }
 
-    // TODO: Resolved instead in the Battle Turn Sequencer to control dialogue output and action result timing
-    private void ResolveActionQueue()
+    private void EvaluateNextState()
     {
-        battleState = BattleState.ResolveTurn;
-
-        if (actionQueue.Count <= 0)
-            return;
-
-        BattleAction action;
-
-        if (actionQueue.Count > 0)
-        {
-            action = actionQueue.Dequeue();
-
-            if (!action.user.IsAlive)
-                return;
-
-            ResolveAction(action);
-        }
-    }
-
-    void ResolveAction(BattleAction _action)
-    {
-        Context.SetActionExecuted(_action);
-        switch (_action.type)
-        {
-            case BattleActionType.Attack:
-                StartCoroutine(UseAttack(_action.user, _action.target));
-                break;
-            case BattleActionType.Defend:
-                StartCoroutine(UseDefend(_action.user, _action.target));
-                break;
-            case BattleActionType.SpecialMove:
-                Context.SetSpecialMoveExecuted(_action.move);
-                StartCoroutine(UseSpecialMove(_action.user, _action.target, _action.move));
-                break;
-            case BattleActionType.Ingratiate:
-                Context.SetIngratiateExecuted(_action.ingratiate);
-                StartCoroutine(UseIngratiate(_action.user, _action.target, _action.ingratiate));
-                break;
-        }
-    }
-
-    void EndTurn()
-    {
-        // Proceed to Next Turn
         if (opponentUnit.IsAlive && playerUnit.IsAlive)
         {
             turnNumber++;
@@ -193,136 +155,40 @@ public class BattleManager : MonoBehaviour
             playerUnit.IsDefending = false;
             opponentUnit.IsDefending = false;
 
-            StartCoroutine(HandleAfterEffects());
-        }
-        // Otherwise battle is over
-        else
-        {
-            battleState = BattleState.Over;
-
-            if (!playerUnit.IsAlive)
-            {
-                StartCoroutine(EndBattle(WhyBattleEnded.Defeat));
-            }
-
-            if (!opponentUnit.IsAlive)
-            {
-                StartCoroutine(EndBattle(WhyBattleEnded.Victory));
-            }
-        }
-    }
-
-    private IEnumerator HandleAfterEffects()
-    {
-        if (playerUnit.statusCondition != null || opponentUnit.statusCondition != null)
-        {
-            battleState = BattleState.AfterEffects;
-            // TODO: get rid of this
-            yield return TextTyper.TypeText(dialogue, $"{opponentUnit.EntityProfile.Entity.displayName} was burned!");
-
-            StatusResolver.OnAfterTurn(playerUnit, Context);
-            StatusResolver.OnAfterTurn(opponentUnit, Context);
-
-            yield return new WaitForSeconds(0.5f);
-
-        }
-        if (!playerUnit.IsAlive || !opponentUnit.IsAlive)
-            EndTurn();
-        else
             StartPlayerSelection();
-    }
-    #endregion
-
-
-
-    // ----------------------------------------------------------------------------------------------------------
-    #region Use Action
-    private IEnumerator UseAttack(BattleEntity _user, BattleEntity _reciever)
-    {
-        yield return TextTyper.TypeText(dialogue, $"{_user.EntityProfile.Entity.displayName} attacked {_reciever.EntityProfile.Entity.displayName}!");
-        // TODO: temporary stupid logic for recieving defend
-        _reciever.TakeDamage(_reciever.IsDefending ? _user.EntityProfile.Stats.attackDamage / 2 : _user.EntityProfile.Stats.attackDamage);
-
-        if (actionQueue.Count <= 0 || !_reciever.IsAlive)
-            EndTurn();
-        else
-        {
-            ResolveActionQueue();
-        }
-    }
-
-    private IEnumerator UseDefend(BattleEntity _user, BattleEntity _reciever)
-    {
-        // TODO: need better defend method later. All damage should be queued and evaluated before applied?
-        _user.IsDefending = true;
-        yield return TextTyper.TypeText(dialogue, $"{_user.EntityProfile.Entity.displayName} defended against {_reciever.EntityProfile.Entity.displayName}!");
-        
-        if (actionQueue.Count <= 0)
-            EndTurn();
-        else
-            ResolveActionQueue();
-    }
-
-    private IEnumerator UseSpecialMove(BattleEntity _user, BattleEntity _reciever, SpecialMove _move)
-    {
-        yield return TextTyper.TypeText(dialogue, $"{_user.EntityProfile.Entity.displayName} used {_move.moveName}!");
- 
-        bool moveSuccess = MoveResolver.UseMove(_user, _reciever, _move);
-
-        yield return TextTyper.TypeText(dialogue, $"{_reciever.EntityProfile.Entity.displayName} was inflicted with burning!");
-
-        if (actionQueue.Count <= 0 || !_reciever.IsAlive)
-            EndTurn();
-        else
-            ResolveActionQueue();
-    }
-
-    private IEnumerator UseIngratiate(BattleEntity _user, BattleEntity _reciever, Ingratiate _ingratiate)
-    {
-        yield return TextTyper.TypeText(dialogue, $"{_user.EntityProfile.Entity.displayName} tried to boost their Approval!");
-
-        // evaluate if reciever liked it or not
-        MinionData minion = (MinionData)_reciever.EntityProfile.Entity;
-        if(minion)
-        {
-            IngratiateResolver.UseIngratiate(_ingratiate, minion);
         }
 
-        if (actionQueue.Count <= 0 || !_reciever.IsAlive)
-            EndTurn();
-        else
-            ResolveActionQueue();
-    }    
+        if (!playerUnit.IsAlive) EndBattle(WhyBattleEnded.Defeat);
+        else if (!opponentUnit.IsAlive) EndBattle(WhyBattleEnded.Victory);
+    }
     #endregion
 
 
 
     // ----------------------------------------------------------------------------------------------------------
     #region End Battle
-    public IEnumerator EndBattle(WhyBattleEnded _why)
+
+    public async void EndBattle(WhyBattleEnded _why)
     {
+        await sequencer.EndBattle(_why, opponentUnit);
         switch (_why)
         {
             case WhyBattleEnded.Defeat:
-                yield return StartCoroutine(TextTyper.TypeText(dialogue, $"You lost to {GetOpponentUnit().EntityProfile.Entity.displayName} :("));
+                // killll
                 break;
 
             case WhyBattleEnded.Victory:
-                yield return StartCoroutine(TextTyper.TypeText(dialogue, $"You won!"));
                 Destroy(GetOpponentUnit().EntityProfile.GameObjectInstance);
                 break;
 
             case WhyBattleEnded.Recruit:
                 temporaryRecruit = GetOpponentUnit().EntityProfile as MinionProfileInstance;
-                //if (GetOpponentUnit().Entity is MinionClass recruit)
-                //PlayerRefGetter.Instance.PlayerInstance.RecruitList.AddNewRecruit(temporaryRecruit);
                 RecruitListManager.Instance.AddNewRecruit(temporaryRecruit);
-                yield return StartCoroutine(TextTyper.TypeText(dialogue, $"You recruited {GetOpponentUnit().EntityProfile.Entity.displayName}!"));
                 Destroy(GetOpponentUnit().EntityProfile.GameObjectInstance);
                 break;
         }
 
-        SyncBattleProfileChanges.SaveBackToPlayerBoss(playerUnit, Context);
+        SyncBattleProfileChanges.SaveBackToPlayerBoss(playerUnit);
         BattleEvents.BattleEnded?.Invoke();
         ResetBattleManager();
     }
@@ -336,6 +202,8 @@ public class BattleManager : MonoBehaviour
         actionQueue.Clear();
     }
     #endregion
+
+
 
     // ----------------------------------------------------------------------------------------------------------
     #region External Helpers
