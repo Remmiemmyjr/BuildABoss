@@ -33,17 +33,7 @@ public class BattleLogWriter : MonoBehaviour
 
         writer.OnFinishWriter.RemoveListener(Complete);
         writer.OnSkipWriter.RemoveListener(CompleteOnSkip);
-
+        
         await Awaitable.WaitForSecondsAsync(1.5f, destroyCancellationToken);
     }
-
-    // ATTACK:
-    // Describe move
-    //  (Wait for Typewriter to finish)
-    // Update health bar & mana bar (may separate later so that mana goes first and hp waits for it)
-    //  (Wait for Updates to finish)
-    // Print any after effects
-    //  (Wait for Typewriter to finish)
-    // Apply after effect result
-    //  (Wait for Updates to finish)
 }

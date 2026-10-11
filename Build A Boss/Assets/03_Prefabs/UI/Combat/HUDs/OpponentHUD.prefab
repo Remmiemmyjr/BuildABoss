@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -0.00012207031, y: -0.000007987}
+  m_AnchoredPosition: {x: 0, y: -0.000007987}
   m_SizeDelta: {x: 0, y: 16.55}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &6605499964380080299
@@ -109,7 +109,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.2023926, y: 1.2022018}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 317.6405, y: 87.0608}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &896321132360274904
@@ -276,10 +276,10 @@ RectTransform:
   - {fileID: 5248123266484329789}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 252, y: 187}
-  m_SizeDelta: {x: 296.12, y: 76}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -339.5, y: -145}
+  m_SizeDelta: {x: 299.12, y: 76}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1723275877281079338
 CanvasRenderer:
@@ -303,6 +303,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CombatHUD
   nameText: {fileID: 3769854793612219785}
   levelText: {fileID: 5511904391417578490}
+  image: {fileID: 0}
   hpBar: {fileID: 8237638832469867482}
   manaBar: {fileID: 0}
 --- !u!1 &7976956720090105048

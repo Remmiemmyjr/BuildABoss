@@ -23,7 +23,14 @@ public class LairBuildTool : MonoBehaviour
 
     // TODO: Will want a Persistant Lair data/instance to load and unload grid progress and other variables (min requirement met, etc)
 
+
     #region Unity Functions
+    private void Start()
+    {
+        cellIndicator.SetActive(false);
+        mouseIndicator.SetActive(false);
+    }
+
     private void Update()
     {
         if (InputManager.Instance.mouseOverUI)
@@ -119,6 +126,7 @@ public class LairBuildTool : MonoBehaviour
         }
 
         cellIndicator.SetActive(true);
+        mouseIndicator.SetActive(true);
         OnPlaceAsset += PlaceStructure;
         OnFinishPlacing += StopPlacement;
     }
@@ -142,6 +150,7 @@ public class LairBuildTool : MonoBehaviour
     {
         selectedObjIndex = -1;
         cellIndicator.SetActive(false);
+        mouseIndicator.SetActive(false);
         OnPlaceAsset -= PlaceStructure;
         OnFinishPlacing -= StopPlacement;
     }

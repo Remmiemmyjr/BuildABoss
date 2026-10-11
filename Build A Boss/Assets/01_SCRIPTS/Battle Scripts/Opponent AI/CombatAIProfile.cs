@@ -33,6 +33,7 @@ public abstract class CombatAIProfile : ScriptableObject
             if (runningTotal > roll)
             {
                 BattleActionType selectedAction = action.actionType;
+
                 return selectedAction;
             }
         }
