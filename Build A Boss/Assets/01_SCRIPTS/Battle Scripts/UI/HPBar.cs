@@ -21,7 +21,6 @@ public class HPBar : MonoBehaviour
     {
         float currHP = hpBar.transform.localScale.x;
         //float changeAmount = currHP - newHP;
-
         while (Mathf.Abs(currHP - newHP) > Mathf.Epsilon)
         {
             //currHP -= changeAmount * Time.deltaTime; // TODO: make speed vary depending on damage amount and super effectiveness

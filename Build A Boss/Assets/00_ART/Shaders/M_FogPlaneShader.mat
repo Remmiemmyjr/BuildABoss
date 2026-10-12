@@ -61,7 +61,7 @@ Material:
     - _distance: 152.11
     m_Colors:
     - _Color: {r: 0.18843006, g: 0.2528302, b: 0.2463902, a: 1}
-    - _DeepFogColor: {r: 0.034309234, g: 0.023118565, b: 0.06415099, a: 1}
+    - _DeepFogColor: {r: 0.06826557, g: 0.047483094, b: 0.10188681, a: 1}
     - _TopFogColor: {r: 0.31329727, g: 0.17944461, b: 0.3509434, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

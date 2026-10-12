@@ -243,4 +243,14 @@ public class ChoiceManager : MonoBehaviour
         }
     }
     #endregion
+
+
+
+    #region Sound Effects
+    public void OnClick()
+    {
+        
+    }
+    #endregion
+
 }

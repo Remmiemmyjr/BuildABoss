@@ -20,15 +20,15 @@ public class BattleManager : MonoBehaviour
     [SerializeField] BattleEntity playerUnit; 
     [SerializeField] BattleEntity opponentUnit;
 
-    [Header("Dialogue References")]
-    [SerializeField] GameObject dialogueBox;
-    public TMP_Text dialogue; // TODO: will probably have battle log manage this instead
+    [Header("Additional Components")]
     [SerializeField] private BattleSequencer sequencer;
+    [SerializeField] private AudioClip battleSong;
+    [SerializeField] private AudioClip fieldSong;
 
     [Header("Choice & Action Management")]
     private List<BattleAction> pendingActions = new();
     private Queue<BattleAction> actionQueue = new();
-    public MinionProfileInstance temporaryRecruit;
+    [HideInInspector] public MinionProfileInstance temporaryRecruit;
 
     [Header("Turns")]
     public int turnNumber;
@@ -66,6 +66,8 @@ public class BattleManager : MonoBehaviour
     {
         turnNumber = 0;
         approval = 0;
+
+        AudioManager.Instance.PlaySong(battleSong);
 
         BattleEntity player = BattleEntityFactory.CreateFromPlayerBoss(PlayerRefGetter.Instance.PlayerInstance);
         BattleEntity opponent = BattleEntityFactory.CreateFromOpponent(_opponentProfile);
@@ -190,6 +192,8 @@ public class BattleManager : MonoBehaviour
 
         SyncBattleProfileChanges.SaveBackToPlayerBoss(playerUnit);
         BattleEvents.BattleEnded?.Invoke();
+        AudioManager.Instance.StopSong();
+        AudioManager.Instance.PlaySong(fieldSong);
         ResetBattleManager();
     }
 

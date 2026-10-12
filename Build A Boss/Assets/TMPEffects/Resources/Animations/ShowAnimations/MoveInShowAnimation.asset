@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05dba42c317fd2b42a5da053b8df296d, type: 3}
   m_Name: MoveInShowAnimation
   m_EditorClassIdentifier: 
-  duration: 1
+  duration: 0.2
   curve:
     serializedVersion: 2
     m_Curve:
@@ -20,50 +20,41 @@ MonoBehaviour:
       time: 0
       value: 0
       inSlope: 0
-      outSlope: 12.519564
+      outSlope: 0
       tangentMode: 0
       weightedMode: 3
       inWeight: 0
       outWeight: 0.5916667
     - serializedVersion: 3
-      time: 0.225
-      value: 1
-      inSlope: -4.402922
-      outSlope: -3.2624085
+      time: 0.40041122
+      value: 0.88744354
+      inSlope: 0.28175464
+      outSlope: 0.28175464
       tangentMode: 0
       weightedMode: 3
       inWeight: 0.59166664
-      outWeight: 0.3916667
+      outWeight: 0.6562562
     - serializedVersion: 3
-      time: 0.525
-      value: 1
-      inSlope: -0.55036545
-      outSlope: -0.40816337
+      time: 0.62502056
+      value: 0.9413253
+      inSlope: 0.19540472
+      outSlope: 0.19540472
       tangentMode: 0
       weightedMode: 3
-      inWeight: 0.8666667
-      outWeight: 0.40833333
-    - serializedVersion: 3
-      time: 0.825
-      value: 1
-      inSlope: -0.06879558
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 3
-      inWeight: 0.8916666
-      outWeight: 0.008331367
+      inWeight: 0.5479017
+      outWeight: 0.33329678
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 0.014328615
-      outSlope: 0
+      inSlope: 0.5708856
+      outSlope: 0.5708856
       tangentMode: 0
       weightedMode: 3
-      inWeight: 1
+      inWeight: 0.26010382
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   startPosition:
-    vector: {x: 50, y: 50, z: 50}
+    vector: {x: -0.75, y: 1.5, z: 1}
     type: 1

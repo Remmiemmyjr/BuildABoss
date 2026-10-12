@@ -5,7 +5,6 @@ using UnityEngine;
 public class BattleSequencer : MonoBehaviour
 {
     [SerializeField] private BattleLogWriter battleLogWriter;
-
     public async Awaitable RunTurn(Queue<BattleAction> _actions)
     {
         while (_actions.Count > 0)
@@ -22,12 +21,12 @@ public class BattleSequencer : MonoBehaviour
 
     public async Awaitable StartBattle(BattleEntity _opponent)
     {
-        await battleLogWriter.PrintTurnMessage($"{_opponent.Name} challenges you to a fight!");
+        await battleLogWriter.PrintTurnMessage($"<+move><+grow><wave><color=#C988F0>{_opponent.Name}</color></wave> challenges you to a fight!</+grow></+move>", 1.5f);
     }
 
     public async Awaitable PromptSelection()
     {
-        await battleLogWriter.PrintTurnMessage($"What will you do?");
+        await battleLogWriter.PrintTurnMessage($"<+move><+grow><wave amplitude=1.5 upperiod=0.85 downperiod=0.85 crestwait=0.25 troughwait=0.25><pivot><grow>What will you do?</grow></pivot></wave></+grow></+move>", 0.05f);
     }
 
     public async Awaitable EndBattle(WhyBattleEnded _why, BattleEntity _opponent)
@@ -35,15 +34,18 @@ public class BattleSequencer : MonoBehaviour
         switch(_why)
         {
             case WhyBattleEnded.Defeat:
-                await battleLogWriter.PrintTurnMessage($"You were defeated by {_opponent.Name}");
+                BattleSFXPlayer.Instance.PlayLoseSFX();
+                await battleLogWriter.PrintTurnMessage($"<+move><+grow>You were defeated by <wave><color=#C988F0>{_opponent.Name}</color></wave><!delay=0.65><!delay=0.65 for=punct type=pct>...</+grow></+move>", 1.5f);
                 break;
 
             case WhyBattleEnded.Victory:
-                await battleLogWriter.PrintTurnMessage($"You won!");
+                BattleSFXPlayer.Instance.PlayWinSFX();
+                await battleLogWriter.PrintTurnMessage($"<+move><+grow>You won!</+grow></+move>", 1.5f);
                 break;
 
             case WhyBattleEnded.Recruit:
-                await battleLogWriter.PrintTurnMessage($"You recruited {_opponent.Name}");
+                BattleSFXPlayer.Instance.PlayRecruitSFX();
+                await battleLogWriter.PrintTurnMessage($"<+move><+grow><!delay=0.75><!delay=0.75 for=punct type=pct>...<!delay=0.05><!delay=0.05 for=punct type=pct><!wait=1>\nYou recruited <wave><color=#C988F0>{_opponent.Name}</color></wave>!</+grow></+move>", 1.5f);
                 break;
         }
     }
@@ -60,11 +62,12 @@ public class BattleSequencer : MonoBehaviour
     private async Awaitable ExecuteAttack(BattleAction _action)
     {
         // 1. Describe
-        await battleLogWriter.PrintTurnMessage($"{_action.user.Name} attacked {_action.target.Name}");
+        await battleLogWriter.PrintTurnMessage($"<+move><+grow>{_action.user.Name} attacked {_action.target.Name} </+grow></+move>", 1.5f);
 
         // 2. Compute
         _action.target.ComputeIncomingDamage(_action.user.AttackDamage);
         // 3. Apply & Update
+        BattleSFXPlayer.Instance.PlayAttackSFX();
         _action.target.ApplyDamage();
     }
 
@@ -72,14 +75,16 @@ public class BattleSequencer : MonoBehaviour
     {
         _action.user.IsDefending = true;
         // 1. Describe
-        await battleLogWriter.PrintTurnMessage($"{_action.user.Name} defended against {_action.target.Name}");
+        await battleLogWriter.PrintTurnMessage($"<+move><+grow>{_action.user.Name} defended against {_action.target.Name} </+grow></+move>", 1.5f);
         // 2. Apply
+        BattleSFXPlayer.Instance.PlayDefendSFX();
     }
 
     private async Awaitable ExecuteSpecialMove(BattleAction _action)
     {
         // 1. Describe
-        await battleLogWriter.PrintTurnMessage($"{_action.user.Name} used {_action.move.moveName}");
+        await battleLogWriter.PrintTurnMessage($"<+move><+grow>{_action.user.Name} used {_action.move.moveName}</+grow></+move>", 1.5f);
+        BattleSFXPlayer.Instance.PlaySpecialMoveSFX();
         // 2. Apply
         bool moveSuccess = MoveResolver.UseMove(_action.user, _action.target, _action.move);
     }
@@ -87,8 +92,9 @@ public class BattleSequencer : MonoBehaviour
     private async Awaitable ExecuteIngratiate(BattleAction _action)
     {
         // 1. Describe
-        await battleLogWriter.PrintTurnMessage($"{_action.user.Name} used {_action.ingratiate.ingratiateName} to try and boost their approval!");
+        await battleLogWriter.PrintTurnMessage($"<+move><+grow>{_action.user.Name} used {_action.ingratiate.ingratiateName} to try and boost their approval<!delay=0.65><!delay=0.65 for=punct type=pct>...</+grow></+move>", 1.5f);
         // 2. Apply
+        BattleSFXPlayer.Instance.PlayIngratiateSFX();
         MinionData minion = (MinionData)_action.target.EntityProfile.Entity;
         if (minion)
         {
@@ -102,7 +108,7 @@ public class BattleSequencer : MonoBehaviour
         {
             if (entity.statusCondition == null) continue;
             
-            await battleLogWriter.PrintTurnMessage($"{entity.Name} was affected by {entity.statusCondition}");
+            await battleLogWriter.PrintTurnMessage($"<+move><+grow>{entity.Name} was affected by {entity.statusCondition}</+grow></+move>", 1.5f);
             StatusResolver.OnAfterTurn(entity);
             entity.ApplyDamage();
         }

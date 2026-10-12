@@ -12,7 +12,7 @@ public class BattleLogWriter : MonoBehaviour
 
     // RunTurn() takes queue of actions it needs to print. 
 
-    public async Awaitable PrintTurnMessage(string _message)
+    public async Awaitable PrintTurnMessage(string _message, float wait)
     {
         var completion = new AwaitableCompletionSource();
         bool done = false;
@@ -27,6 +27,7 @@ public class BattleLogWriter : MonoBehaviour
 
         writer.OnFinishWriter.AddListener(Complete);
         writer.OnSkipWriter.AddListener(CompleteOnSkip);
+        writer.OnCharacterShown.AddListener((w, c) => Debug.Log($"{Time.unscaledTime:F3} shown idx {writer.CurrentIndex}"));
         battleLogText.text = _message;
 
         await completion.Awaitable;
@@ -34,6 +35,6 @@ public class BattleLogWriter : MonoBehaviour
         writer.OnFinishWriter.RemoveListener(Complete);
         writer.OnSkipWriter.RemoveListener(CompleteOnSkip);
         
-        await Awaitable.WaitForSecondsAsync(1.5f, destroyCancellationToken);
+        await Awaitable.WaitForSecondsAsync(wait, destroyCancellationToken);
     }
 }

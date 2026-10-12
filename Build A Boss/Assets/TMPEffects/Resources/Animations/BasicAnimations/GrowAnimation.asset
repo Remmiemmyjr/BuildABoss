@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: GrowAnimation
   m_EditorClassIdentifier: 
   wave:
-    upPeriod: 0.3
-    downPeriod: 0.3
-    amplitude: 1
+    upPeriod: 0.75
+    downPeriod: 0.75
+    amplitude: 0.3
     upwardCurve:
       serializedVersion: 2
       m_Curve:
@@ -83,15 +83,15 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     crestWait: 0
-    troughWait: 1
+    troughWait: 1.25
     velocity: 1
   offsetProvider:
     offsetProvider:
-      enumValue: 5
+      enumValue: 40
       customValue: {fileID: 0}
       useCustom: 0
     uniformity: 0.05
     ignoreAnimatorScaling: 0
     zeroBasedOffset: 0
-  maxScale: 1.25
+  maxScale: 1.35
   minScale: 1

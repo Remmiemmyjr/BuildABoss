@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: PivotAnimation
   m_EditorClassIdentifier: 
   wave:
-    upPeriod: 1
-    downPeriod: 1
+    upPeriod: 1.5
+    downPeriod: 1.5
     amplitude: 1
     upwardCurve:
       serializedVersion: 2
@@ -82,20 +82,20 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    crestWait: 1
-    troughWait: 0
+    crestWait: 0.1
+    troughWait: 0.1
     velocity: 1
   waveOffsetType:
     offsetProvider:
       enumValue: 5
       customValue: {fileID: 0}
       useCustom: 0
-    uniformity: 0.05
+    uniformity: 0.1
     ignoreAnimatorScaling: 0
     zeroBasedOffset: 0
   pivot:
     vector: {x: 0, y: 0, z: 0}
     type: 2
   rotationAxis: {x: 0, y: 0, z: -1}
-  maxAngleLimit: 25
-  minAngleLimit: -25
+  maxAngleLimit: 3
+  minAngleLimit: -3

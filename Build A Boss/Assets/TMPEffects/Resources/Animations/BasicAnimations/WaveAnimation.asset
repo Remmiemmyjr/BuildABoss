@@ -21,9 +21,9 @@ MonoBehaviour:
     ignoreAnimatorScaling: 0
     zeroBasedOffset: 0
   wave:
-    upPeriod: 0.5
-    downPeriod: 0.5
-    amplitude: 10
+    upPeriod: 0.35
+    downPeriod: 0.35
+    amplitude: 1.75
     upwardCurve:
       serializedVersion: 2
       m_Curve:

@@ -27,10 +27,12 @@ public class UnitInfoHUD : MonoBehaviour
     public void UpdateHPBar(BattleEntity battleUnit)
     {
         hpBar.SetHP((float)battleUnit.currHP / battleUnit.EntityProfile.Stats.maxHP);
+        
     }
 
     public void UpdateManaBar(BattleEntity battleUnit)
     {
         manaBar?.SetMana((float)battleUnit.currMana / battleUnit.EntityProfile.Stats.maxMana);
     }
+
 }
