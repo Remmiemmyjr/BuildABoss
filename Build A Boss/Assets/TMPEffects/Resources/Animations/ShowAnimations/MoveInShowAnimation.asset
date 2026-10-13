@@ -56,5 +56,5 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   startPosition:
-    vector: {x: -0.75, y: 1.5, z: 1}
+    vector: {x: -0.75, y: 1.15, z: 1}
     type: 1

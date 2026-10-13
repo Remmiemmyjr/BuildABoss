@@ -25,7 +25,7 @@ public class BattleTurnSequence : MonoBehaviour
 
     public async Awaitable PromptSelection()
     {
-        await battleLogWriter.PrintTurnMessage($"<+move><+grow><wave amplitude=1.5 upperiod=0.85 downperiod=0.85 crestwait=0.25 troughwait=0.25><pivot><grow>What will you do?</grow></pivot></wave></+grow></+move>", 0.05f);
+        await battleLogWriter.PrintTurnMessage($"<+move><+grow><wave amplitude=1.755 upperiod=0.95 downperiod=0.95 crestwait=0.1 troughwait=0.1><pivot><grow>What will you do?</grow></pivot></wave></+grow></+move>", 0.05f);
     }
 
     public async Awaitable EndBattle(WhyBattleEnded _why, BattleEntity _opponent)

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wave:
     upPeriod: 1.5
-    downPeriod: 1.5
+    downPeriod: 2
     amplitude: 1
     upwardCurve:
       serializedVersion: 2
@@ -25,26 +25,17 @@ MonoBehaviour:
         inSlope: 0
         outSlope: 0
         tangentMode: 0
-        weightedMode: 3
+        weightedMode: 0
         inWeight: 0
-        outWeight: 0.333334
-      - serializedVersion: 3
-        time: 0.5
-        value: 0.5
-        inSlope: 2.9999938
-        outSlope: 2.9999943
-        tangentMode: 0
-        weightedMode: 3
-        inWeight: 0.33333403
-        outWeight: 0.33333397
+        outWeight: 0
       - serializedVersion: 3
         time: 1
         value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 0
-        weightedMode: 3
-        inWeight: 0.33333397
+        weightedMode: 0
+        inWeight: 0
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -82,20 +73,20 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    crestWait: 0.1
-    troughWait: 0.1
+    crestWait: 0.01
+    troughWait: 0.01
     velocity: 1
   waveOffsetType:
     offsetProvider:
       enumValue: 5
       customValue: {fileID: 0}
       useCustom: 0
-    uniformity: 0.1
+    uniformity: 0.5
     ignoreAnimatorScaling: 0
     zeroBasedOffset: 0
   pivot:
     vector: {x: 0, y: 0, z: 0}
     type: 2
-  rotationAxis: {x: 0, y: 0, z: -1}
+  rotationAxis: {x: 0, y: 0, z: -2}
   maxAngleLimit: 3
   minAngleLimit: -3
