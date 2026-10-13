@@ -1,0 +1,20 @@
+{
+    "name": "Game.Battle",
+    "rootNamespace": "",
+    "references": [
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:96c64e576ede81e46ad482a315c680f9",
+        "GUID:6e17bb6e4536c934fadd83f4104f9f4f",
+        "GUID:41a45d371827a264a9ced372fe1ed370",
+        "GUID:658daa2aa7f12f9478b75ffa7174f771"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

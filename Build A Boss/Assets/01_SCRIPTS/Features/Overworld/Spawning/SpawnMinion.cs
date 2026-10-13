@@ -1,0 +1,25 @@
+using System.Collections.Generic;
+using UnityEngine;
+
+public class SpawnMinion : MonoBehaviour
+{
+    public List<MinionData> minionsThatCanSpawn;
+    public GameObject prefab; // TODO: Dictionary/map of minions to spawn, Prefab & Quantity?
+    public List<Transform> listOfSpawnpoints;
+
+    private void Start()
+    {
+        for(int i = 0; i < listOfSpawnpoints.Count; i++)
+            SpawnRandomMinion(listOfSpawnpoints[i], minionsThatCanSpawn[(int)Random.Range(0, minionsThatCanSpawn.Count)]);
+    }
+
+    public void SpawnRandomMinion(Transform _spawnPoint, MinionData _minionToSpawn)
+    {
+        GameObject newMinion = Instantiate(prefab, _spawnPoint.position, Quaternion.identity);
+        newMinion.GetComponent<SpriteRenderer>().sprite = _minionToSpawn.sprite;
+        MinionProfileInstance instance = new MinionProfileInstance(_minionToSpawn);
+        OpponentController controller = newMinion.GetComponent<OpponentController>();
+        controller.SetInstance(instance);
+        controller.opponentInstance.GameObjectInstance = newMinion;
+    }
+}

@@ -20780,10 +20780,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 701312884799663940}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d067ee7e25fc2842bf2308e2e392b22, type: 3}
+  m_Script: {fileID: 11500000, guid: a1df7d5a1945fe049bfac75e28f79193, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Combat::BattleLogWriter
-  battleLogText: {fileID: 701312884799663941}
+  text: {fileID: 701312884799663941}
   writer: {fileID: 712302485}
 --- !u!114 &701312884799663943
 MonoBehaviour:
