@@ -134,7 +134,7 @@ public class BattleManager : MonoBehaviour
 
     void BuildActionQueue()
     {
-        // TODO: Should Defend always go first, or fail if it's last in order?
+        // TODO: Defend always go first
                                    // a.user.Speed
         pendingActions.Sort((a, b) => b.user.Speed.CompareTo(a.user.Speed));
 

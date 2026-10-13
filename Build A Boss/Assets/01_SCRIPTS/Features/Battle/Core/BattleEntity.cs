@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class BattleEntity : IBattleUnit
 {
-    // TODO: Set visual data at some point (sprite n whatnot)
-
     #region Variables
-    //public EntityData Entity { get; private set; }
     public EntityProfileInstance EntityProfile { get; set; }
     public string Name { get; set; }
     public CombatAIProfile CombatAI { get; set; }
     public bool IsAlive => currHP > 0;
-    public bool IsDefending = false; // TODO: hmmmm.... gotta be a better way to manage lmao
+    public bool IsDefending = false;
     public int remainingAfflictedTurns;
 
     [Header("Battle Info")]
@@ -75,7 +72,6 @@ public class BattleEntity : IBattleUnit
 
     public void Heal(int amount)
     {
-        // TODO: Change all Enitty.baseStats instances to grab from Profile
         if (currHP >= EntityProfile.Stats.maxHP)
             return;
         amount = Mathf.Clamp(amount, 0, EntityProfile.Stats.maxHP - currHP);
